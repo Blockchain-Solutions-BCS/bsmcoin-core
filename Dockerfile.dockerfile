@@ -1,11 +1,17 @@
-FROM ubuntu:xenial
+FROM phusion/baseimage:0.11
 
-RUN apt-get update
-RUN apt-get install -yq --no-install-recommends \
+ENV LANG=en_US.UTF-8
+ARG DEBIAN_FRONTEND=noninteractive
+RUN apt-get update -y && \
+    apt-get install -yq --no-install-recommends \
+    git \
+    autoconf \
+    cmake \
     build-essential \
     libcurl3-dev \
     libdb++-dev \
     libtool \ 
+    unbound \
     autotools-dev \
     automake \
     pkg-config \
@@ -26,11 +32,10 @@ RUN apt-get install -yq --no-install-recommends \
     libminiupnpc-dev \
     ca-certificates	 \
     libunbound-dev \
-    git \
     vim
 RUN apt-get clean
 RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-
+RUN whereis libunbound
 #--------------------------------------------------------------------------------
 # Build + install Berkeley DB
 #--------------------------------------------------------------------------------
@@ -53,23 +58,20 @@ RUN ../dist/configure --enable-cxx \
     --with-pic \
     --prefix=$BDB_DIR
 RUN make install
-
 #--------------------------------------------------------------------------------
 # NavBS Build + Install
 #--------------------------------------------------------------------------------
-
-
 WORKDIR /tmp
 RUN git clone https://github.com/Blockchain-Solutions-BCS/navcoin-core.git
 
-WORKDIR /tmp/navcoin-core
+WORKDIR /tmp/navcoin-core/
 RUN ./autogen.sh
 RUN ./configure LDFLAGS="-L${BDB_DIR}/lib/" \
     CPPFLAGS="-I${BDB_DIR}/include/" \
     --enable-hardening \
     --without-gui \
-    --enable-upnp-default \
-    RUN make && make install
+    --enable-upnp-default
+RUN make && make install
 
 EXPOSE 8430
 EXPOSE 8434
@@ -78,7 +80,7 @@ EXPOSE 8430/udp
 EXPOSE 8434/udp
 EXPOSE 8435/udp
 
-WORKDIR /
-RUN rm -fr /tmp/*
+WORKDIR /tmp/navcoin-core/src
+RUN ./navcoind -port=8430 -rpcport=8434 -debug=rpc -dns=0 -dnsseed=0
 
-ENTRYPOINT ["/bin/bash", "-c"]
+ENTRYPOINT ["/bin/bash"]
