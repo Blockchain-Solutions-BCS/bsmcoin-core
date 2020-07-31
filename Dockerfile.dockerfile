@@ -1,7 +1,13 @@
-FROM clangbuiltlinux/ubuntu:latest
+FROM phusion/baseimage:0.11
 
 RUN apt-get update && \
-    apt-get upgrade -y &&\
+    apt-get install -y &&\
+    g++ \
+    autoconf \
+    cmake \
+    git \
+    libboost-all-dev \
+
 
     # NavBS install
     git clone https://github.com/blockchain-solutions-bcs/navcoin-core && \
@@ -12,3 +18,5 @@ RUN apt-get update && \
     make && make install
 
 ENTRYPOINT ./src/navcoid 
+
+STOPSIGNAL SIGINT
