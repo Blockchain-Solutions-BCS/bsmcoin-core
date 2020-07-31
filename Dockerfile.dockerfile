@@ -1,22 +1,61 @@
-FROM phusion/baseimage:0.11
+FROM ubuntu:xenial
 
-RUN apt-get update && \
-    apt-get install -y &&\
-    g++ \
-    autoconf \
-    cmake \
+RUN apt-get update
+RUN apt-get install -yq --no-install-recommends \
+    build-essential \
+    libcurl3-dev \
+    libtool \ 
+    autotools-dev \
+    automake \
+    pkg-config \
+    libssl-dev \
+    libevent-dev\
+    bsdmainutils \
+    libzmq3-dev\
+    libqrencode-dev \
+    qrencode \
+    wget \
+    curl \
+    libboost-system-dev\
+    libboost-filesystem-dev\
+    libboost-chrono-dev \
+    libboost-program-options-dev \
+    libboost-test-dev \
+    libboost-thread-dev \
+    libminiupnpc-dev \
+    ca-certificates	 \
+    libunbound-dev \
     git \
-    libboost-all-dev \
+    vim
+RUN apt-get clean
+RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
+#--------------------------------------------------------------------------------
+# NavBS Build + Install
+#--------------------------------------------------------------------------------
+ARG REPO=https://github.com/Blockchain-Solutions-BCS/navcoin-core
 
-    # NavBS install
-    git clone https://github.com/blockchain-solutions-bcs/navcoin-core && \
-    cd navcoin-core/depends && \
-    make && \
-    cd .. && \
-    ./autogen.sh && ./configure && \
-    make && make install
+WORKDIR /tmp
+RUN git clone -b ${REPO}
+RUN echo "Cloning from ${REPO}"
 
-ENTRYPOINT ./src/navcoid 
+WORKDIR /tmp/navcoin-core
+RUN ./autogen.sh
+RUN ./configure  \
+    --enable-hardening \
+    --without-gui \
+    --enable-upnp-default \
+    ${CONFIGURE_FLAGS}
+RUN make && make install
 
-STOPSIGNAL SIGINT
+EXPOSE 8430
+EXPOSE 8434
+EXPOSE 8435
+EXPOSE 8430/udp
+EXPOSE 8434/udp
+EXPOSE 8435/udp
+
+WORKDIR /
+RUN rm -fr /tmp/*
+
+ENTRYPOINT ["/bin/bash", "-c"]
