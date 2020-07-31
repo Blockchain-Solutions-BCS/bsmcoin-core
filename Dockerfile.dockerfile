@@ -33,11 +33,10 @@ RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 #--------------------------------------------------------------------------------
 # NavBS Build + Install
 #--------------------------------------------------------------------------------
-ARG REPO=https://github.com/Blockchain-Solutions-BCS/navcoin-core
+
 
 WORKDIR /tmp
-RUN git clone -b ${REPO}
-RUN echo "Cloning from ${REPO}"
+RUN git clone https://github.com/Blockchain-Solutions-BCS/navcoin-core.git
 
 WORKDIR /tmp/navcoin-core
 RUN ./autogen.sh
