@@ -4,6 +4,7 @@ RUN apt-get update
 RUN apt-get install -yq --no-install-recommends \
     build-essential \
     libcurl3-dev \
+    libdb++-dev \
     libtool \ 
     autotools-dev \
     automake \
