@@ -101,13 +101,13 @@ public:
         consensus.fPowNoRetargeting = false;
         consensus.nRuleChangeActivationThreshold = 15120; // 75% of 20160
         consensus.nMinerConfirmationWindow = 20160;
-        consensus.nStakeMinAge = 10;   // minimum for coin age: 10 sec
-        consensus.nTargetSpacing = 30; // Blocktime: 30 sec
+        consensus.nStakeMinAge = 10;   // minimum for coin age: 10 secq
+        consensus.nTargetSpacing = 10; // Blocktime: 30 sec => 10 sec
         consensus.nStakeCombineThreshold = 1000 * COIN;
         consensus.nStakeSplitThreshold = 2 * consensus.nStakeCombineThreshold;
         consensus.nDailyBlockCount = (24 * 60 * 60) / consensus.nTargetSpacing;
         consensus.nModifierInterval = 10 * 60; // time to elapse before new modifier is computed
-        consensus.nTargetTimespan = 25 * 30;
+        consensus.nTargetTimespan = 25 * 10;
         consensus.nLastPOWBlock = 140; // last PoW block then PoS
         consensus.nMinimumQuorumFirstHalf = 0.5;
         consensus.nMinimumQuorumSecondHalf = 0.4;
@@ -152,7 +152,7 @@ public:
         consensus.vParameters[Consensus::CONSENSUS_PARAMS_DAO_VOTE_LIGHT_MIN_FEE].value = 0.1 * COIN;
 
         /** Coinbase transaction outputs can only be spent after this number of new blocks (network rule) */
-        consensus.nCoinbaseMaturity = 6;
+        consensus.nCoinbaseMaturity = 10;
 
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].bit = 28;
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nStartTime = 1199145601; // January 1, 2008
