@@ -1,0 +1,3 @@
+#!/bin/bash
+scp src/navcoind root@66.42.125.188:/root/NavBS
+scp src/navcoind root@199.247.1.84:/root/NavBS
