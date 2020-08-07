@@ -260,7 +260,7 @@
         <property name="styleSheet">
          <string notr="true"/>
         </property>
-        <property name="tabKeyBsmigation">
+        <property name="tabKeyNavigation">
          <bool>false</bool>
         </property>
         <property name="sortingEnabled">

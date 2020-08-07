@@ -552,7 +552,7 @@
          <property name="readOnly">
           <bool>true</bool>
          </property>
-         <property name="tabKeyBsmigation" stdset="0">
+         <property name="tabKeyNavigation" stdset="0">
           <bool>false</bool>
          </property>
          <property name="columnCount" stdset="0">
@@ -1034,7 +1034,7 @@
            <property name="horizontalScrollBarPolicy">
             <enum>Qt::ScrollBarAsNeeded</enum>
            </property>
-           <property name="tabKeyBsmigation">
+           <property name="tabKeyNavigation">
             <bool>false</bool>
            </property>
            <property name="sortingEnabled">
@@ -1098,7 +1098,7 @@
            <property name="horizontalScrollBarPolicy">
             <enum>Qt::ScrollBarAsNeeded</enum>
            </property>
-           <property name="tabKeyBsmigation">
+           <property name="tabKeyNavigation">
             <bool>false</bool>
            </property>
            <property name="sortingEnabled">

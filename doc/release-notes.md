@@ -531,7 +531,7 @@ git merge commit are mentioned.
 - #7334 `e1060c5` coincontrol workaround is still needed in qt5.4 (fixed in qt5.5) (MarcoFalke)
 - #7383 `ae2db67` Rename "amount" to "requested amount" in receive coins table (jonasschnelli)
 - #7396 `cdcbc59` Add option to increase/decrease font size in the console window (jonasschnelli)
-- #7437 `9645218` Disable tab bsmigation for peers tables (Kefkius)
+- #7437 `9645218` Disable tab Navigation for peers tables (Kefkius)
 - #7604 `354b03d` build: Remove spurious dollar sign. Fixes #7189 (dooglus)
 - #7605 `7f001bd` Remove openssl info from init/log and from Qt debug window (jonasschnelli)
 - #7628 `87d6562` Add 'copy full transaction details' option (ericshawlinux)
