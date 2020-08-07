@@ -29,7 +29,7 @@ static CBlock CreateGenesisBlock(const char* pszTimestamp, const CScript& genesi
     // txNew.vout[0].scriptPubKey.clear();
     txNew.vout[0].nValue = genesisReward;
     txNew.vout[0].scriptPubKey.clear();
-    txNew.strDZeel = "NavBS genesis block";
+    txNew.strDZeel = "BSMCoin genesis block";
 
     CBlock genesis;
     genesis.nTime    = nTime;
@@ -57,14 +57,14 @@ static CBlock CreateGenesisBlock(const char* pszTimestamp, const CScript& genesi
  */
 static CBlock CreateGenesisBlock(uint32_t nTime, uint32_t nNonce, uint32_t nBits, int32_t nVersion, const CAmount& genesisReward)
 {
-    const char* pszTimestamp = "Game is afoot!";
+    const char* pszTimestamp = "We've created something";
     const CScript genesisOutputScript = CScript() << ParseHex("04bf5608f13e9b2781b839ea78adbd1cb90d8fc17dcc67028e93e65223ea77f8bc8d8eed1191f37dd0ad20f371912d86e1c2e7369251cb06d2a3fdc5e26262d6df") << OP_CHECKSIG;
     return CreateGenesisBlock(pszTimestamp, genesisOutputScript, nTime, nNonce, nBits, nVersion, genesisReward);
 }
 
 static CBlock CreateGenesisBlockTestnet(uint32_t nTime, uint32_t nNonce, uint32_t nBits, int32_t nVersion, const CAmount& genesisReward)
 {
-    const char* pszTimestamp = "Time does not exist";
+    const char* pszTimestamp = "Time does not exist. Yet";
     const CScript genesisOutputScript = CScript() << ParseHex("047c3ec9cb8ea3148cfdb2107383209fc0883585b25e355ded65970bde3a49c5c79dfac1210dc8a4876f6bb68431b273b6d5347955135502726b0743948cee36d1") << OP_CHECKSIG;
     return CreateGenesisBlock(pszTimestamp, genesisOutputScript, nTime, nNonce, nBits, nVersion, genesisReward);
 }
@@ -95,25 +95,25 @@ public:
         consensus.BIP34Height = 0;
         consensus.BIP34Hash = uint256S("0x00006a4e3e18c71c6d48ad6c261e2254fa764cf29607a4357c99b712dfbb8e6a");
         consensus.powLimit = ArithToUint256(~arith_uint256(0) >> 16);
-        consensus.nPowTargetTimespan = 10; // время, для перепроверки 30 => 10
-        consensus.nPowTargetSpacing = 10;  // время блока
+        consensus.nPowTargetTimespan = 10;
+        consensus.nPowTargetSpacing = 10;
         consensus.fPowAllowMinDifficultyBlocks = false;
         consensus.fPowNoRetargeting = false;
         consensus.nRuleChangeActivationThreshold = 15120; // 75% of 20160
         consensus.nMinerConfirmationWindow = 20160;
-        consensus.nStakeMinAge = 10;   // minimum for coin age: 10 sec
-        consensus.nTargetSpacing = 30; // Blocktime: 30 sec
+        consensus.nStakeMinAge = 60 * 60 * 1;	// minimum for coin age: 1 hour
+        consensus.nTargetSpacing = 30; // Blocktime: 30 secs
         consensus.nStakeCombineThreshold = 1000 * COIN;
         consensus.nStakeSplitThreshold = 2 * consensus.nStakeCombineThreshold;
-        consensus.nDailyBlockCount = (24 * 60 * 60) / consensus.nTargetSpacing;
+        consensus.nDailyBlockCount =  (24 * 60 * 60) / consensus.nTargetSpacing;
         consensus.nModifierInterval = 10 * 60; // time to elapse before new modifier is computed
         consensus.nTargetTimespan = 25 * 30;
-        consensus.nLastPOWBlock = 140; // last PoW block then PoS
+        consensus.nLastPOWBlock = 140;
         consensus.nMinimumQuorumFirstHalf = 0.5;
         consensus.nMinimumQuorumSecondHalf = 0.4;
         consensus.nCommunityFundMinAge = 50;
         consensus.sigActivationTime = 1512990000;
-        consensus.nCoinbaseTimeActivationHeight = 140; // wut
+        consensus.nCoinbaseTimeActivationHeight = 140;
         consensus.nCommunityFundAmount = 0.25 * COIN;
         consensus.nPaymentRequestMaxVersion = CPaymentRequest::ALL_VERSION;
         consensus.nProposalMaxVersion = CProposal::ALL_VERSION;
@@ -820,7 +820,7 @@ public:
         // Deployment of Cold Staking
         consensus.vDeployments[Consensus::DEPLOYMENT_COLDSTAKING].bit = 3;
         consensus.vDeployments[Consensus::DEPLOYMENT_COLDSTAKING].nStartTime = 1525132800; // May 1st, 2018
-        consensus.vDeployments[Consensus::DEPLOYMENT_COLDSTAKING].nTimeout = 1556712000;   // May 1st, 2019
+        consensus.vDeployments[Consensus::DEPLOYMENT_COLDSTAKING].nTimeout = 1556712000; // May 1st, 2019
 
         // Deployment of SegWit (BIP141 and BIP143)
         consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].bit = 5;
