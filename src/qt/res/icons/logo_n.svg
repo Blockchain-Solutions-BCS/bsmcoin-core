@@ -1,54 +1,30 @@
-<svg id="SVGRoot" width="256px" height="256px" version="1.1" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
- <defs>
-  <linearGradient id="linear-gradient" x1="387.23" x2="387.23" y1="398.09" y2="398.47" gradientUnits="userSpaceOnUse">
-   <stop stop-color="#4da3db" offset="0"/>
-   <stop stop-color="#8361a9" offset="1"/>
-  </linearGradient>
-  <linearGradient id="bsmk" x1="306.68" x2="306.85" y1="398.57" y2="398.16" gradientUnits="userSpaceOnUse">
-   <stop stop-color="#7897ce" offset="0"/>
-   <stop stop-color="#8555a2" offset="1"/>
-  </linearGradient>
-  <linearGradient id="bsmj" x1="427.82" x2="157.84" y1="297.5" y2="297.5" gradientUnits="userSpaceOnUse">
-   <stop stop-color="#34c3ee" offset="0"/>
-   <stop stop-color="#6a82d7" offset=".53"/>
-   <stop stop-color="#cc26b2" offset="1"/>
-  </linearGradient>
-  <linearGradient id="bsmc" x1="176.92" x2="246.24" y1="396.03" y2="202.93" gradientUnits="userSpaceOnUse">
-   <stop stop-color="#ce25b2" offset="0"/>
-   <stop stop-color="#8e50c5" offset="1"/>
-  </linearGradient>
-  <linearGradient id="bsmb" x1="429.75" x2="415.15" y1="364.93" y2="210.95" gradientUnits="userSpaceOnUse">
-   <stop stop-color="#3765b0" offset="0"/>
-   <stop stop-color="#4ab5e7" offset="1"/>
-  </linearGradient>
-  <linearGradient id="bsmi" x1="338.67" x2="387.97" y1="377.81" y2="288.95" xlink:href="#bsmb"/>
-  <linearGradient id="bsma" x1="261.38" x2="311.82" y1="234.4" y2="321.85" gradientUnits="userSpaceOnUse">
-   <stop stop-color="#5a75d5" offset="0"/>
-   <stop stop-color="#9e75b4" stop-opacity=".9" offset="1"/>
-  </linearGradient>
-  <linearGradient id="bsmh" x1="299.2" x2="340.27" y1="261.4" y2="396.98" xlink:href="#bsma"/>
-  <linearGradient id="bsmg" x1="334.49" x2="264.46" y1="294.11" y2="218.07" xlink:href="#bsma"/>
-  <linearGradient id="bsmo" x1="99.51" x2="231.35" y1="365.95" y2="242.66" xlink:href="#bsmc"/>
-  <linearGradient id="bsmn" x1="344.24" x2="260.81" y1="404.57" y2="260.75" xlink:href="#bsma"/>
-  <linearGradient id="bsmm" x1="295.15" x2="451.22" y1="345.13" y2="188.54" xlink:href="#bsmb"/>
-  <linearGradient id="bsml" x1="349.64" x2="410.08" y1="379.17" y2="258.87" xlink:href="#bsmb"/>
-  <linearGradient id="bsmf" x1="176.92" x2="246.24" y1="396.03" y2="202.93" gradientUnits="userSpaceOnUse" xlink:href="#bsmc"/>
-  <linearGradient id="bsme" x1="429.75" x2="415.15" y1="364.93" y2="210.95" gradientUnits="userSpaceOnUse" xlink:href="#bsmb"/>
-  <linearGradient id="bsmd" x1="261.38" x2="311.82" y1="234.4" y2="321.85" gradientUnits="userSpaceOnUse" xlink:href="#bsma"/>
- </defs>
- <g class="cls-1" transform="matrix(.50516 0 0 .50516 -22.355 -22.355)" style="isolation:isolate">
-  <polygon class="cls-3" transform="matrix(1.3862 0 0 1.3862 -114.95 -114.94)" points="387.23 398.06 387.43 398.52 387.04 398.52" fill="url(#linear-gradient)"/>
-  <polygon class="cls-4" transform="matrix(1.3862 0 0 1.3862 -114.95 -114.94)" points="306.7 398.06 306.9 398.52 306.51 398.52" fill="url(#bsmk)"/>
-  <polygon class="cls-5" transform="matrix(1.3862 0 0 1.3862 -114.95 -114.94)" points="255.19 291.5 209.9 398.24 129.37 398.24 214.9 196.75 295.5 196.75 340.57 302.92 385.62 196.75 466.15 196.75 380.82 397.77 380.63 398.24 300.5 398.24 300.3 397.77" fill="url(#bsmj)"/>
-  <polygon class="cls-6" transform="matrix(1.3862 0 0 1.3862 -114.95 -114.94)" points="129.13 398.52 209.66 398.52 295.26 197.03" fill="url(#bsmf)"/>
-  <polygon class="cls-7" transform="matrix(1.3862 0 0 1.3862 -114.95 -114.94)" points="465.88 197.03 380.85 398.1 385.52 197.03" fill="url(#bsme)" style="mix-blend-mode:overlay"/>
-  <polygon class="cls-8" transform="matrix(1.3862 0 0 1.3862 -114.95 -114.94)" points="300.5 398.1 385.52 197.03 380.85 398.1" fill="url(#bsmi)" style="mix-blend-mode:overlay"/>
-  <polygon class="cls-9" transform="matrix(1.3862 0 0 1.3862 -114.95 -114.94)" points="215.47 197.25 300.5 398.32 295.26 197.03" fill="url(#bsmd)" style="mix-blend-mode:soft-light"/>
-  <polygon class="cls-10" transform="matrix(1.3862 0 0 1.3862 -114.95 -114.94)" points="380.85 398.32 295.26 197.03 300.5 398.32" fill="url(#bsmh)" style="mix-blend-mode:soft-light"/>
-  <polygon class="cls-11" transform="matrix(1.3862 0 0 1.3862 -114.95 -114.94)" points="295.26 197.14 214.68 197.14 380.29 398.21" fill="url(#bsmg)" style="mix-blend-mode:overlay"/>
-  <polygon class="cls-12" transform="matrix(1.3862 0 0 1.3862 -114.95 -114.94)" points="129.13 398.52 215.47 197.25 295.26 197.03" fill="url(#bsmo)"/>
-  <polygon class="cls-13" transform="matrix(1.3862 0 0 1.3862 -114.95 -114.94)" points="214.66 197.14 380.85 398.42 300.5 398.42" fill="url(#bsmn)" style="mix-blend-mode:overlay"/>
-  <polygon class="cls-14" transform="matrix(1.3862 0 0 1.3862 -114.95 -114.94)" points="465.68 196.94 385.33 196.94 299.98 398.01" fill="url(#bsmm)" opacity=".89" style="mix-blend-mode:hard-light"/>
-  <polygon class="cls-15" transform="matrix(1.3862 0 0 1.3862 -114.95 -114.94)" points="380.33 398.06 299.98 398.06 465.68 196.98" fill="url(#bsml)" opacity=".89" style="mix-blend-mode:hard-light"/>
- </g>
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
+ "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+ width="230.000000pt" height="230.000000pt" viewBox="0 0 230.000000 230.000000"
+ preserveAspectRatio="xMidYMid meet">
+
+<g transform="translate(0.000000,230.000000) scale(0.100000,-0.100000)"
+fill="#000000" stroke="none">
+<path d="M718 1921 c-224 -130 -407 -238 -407 -241 -1 -5 464 -275 492 -286
+12 -4 58 18 135 63 64 39 209 123 320 188 l204 118 55 -29 c30 -16 59 -34 64
+-40 7 -9 -54 -48 -212 -139 l-221 -128 -34 17 -35 16 -95 -56 c-52 -32 -91
+-60 -87 -64 4 -5 59 -37 122 -74 l114 -65 57 32 c325 185 770 443 770 447 0 3
+-112 69 -249 147 l-248 142 -314 -179 c-173 -99 -317 -180 -321 -180 -12 0
+-118 64 -118 71 0 4 98 64 218 134 l217 126 40 -19 40 -19 88 52 88 52 -134
+76 c-74 43 -136 77 -138 76 -2 -1 -187 -107 -411 -238z"/>
+<path d="M1630 1360 l-415 -238 -3 -481 c-1 -264 -1 -481 1 -481 2 0 190 108
+418 239 l414 239 3 176 c1 97 1 176 -2 176 -2 0 -43 -23 -90 -51 l-86 -50 0
+-58 c0 -42 -5 -62 -16 -72 -39 -32 -440 -257 -447 -250 -4 4 -6 120 -5 257 l3
+249 225 131 c124 73 228 130 233 127 4 -2 7 -31 7 -64 l0 -60 70 38 c121 66
+111 43 108 240 l-3 171 -415 -238z"/>
+<path d="M250 1108 l1 -483 122 -69 c67 -38 250 -143 406 -234 157 -90 291
+-166 298 -169 10 -4 13 43 13 245 l0 250 -35 26 c-19 15 -35 31 -35 37 0 5 16
+19 35 30 l35 21 0 172 0 171 -411 240 c-226 132 -415 242 -420 243 -5 2 -9
+-205 -9 -480z m473 -8 l167 -95 0 -77 c0 -43 -2 -78 -4 -78 -3 0 -103 58 -223
+129 l-218 128 -3 78 -3 77 59 -34 c32 -18 134 -76 225 -128z m-53 -336 l220
+-127 0 -79 c0 -44 -3 -77 -7 -75 -5 2 -106 62 -225 132 l-218 127 0 74 c0 41
+2 74 5 74 3 0 105 -57 225 -126z"/>
+</g>
 </svg>
