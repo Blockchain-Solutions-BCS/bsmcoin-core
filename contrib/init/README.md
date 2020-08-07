@@ -1,11 +1,11 @@
 Sample configuration files for:
 
-SystemD: navcoind.service
-Upstart: navcoind.conf
-OpenRC:  navcoind.openrc
-         navcoind.openrcconf
-CentOS:  navcoind.init
-OS X:    org.navcoin.navcoind.plist
+SystemD: bsmcoind.service
+Upstart: bsmcoind.conf
+OpenRC:  bsmcoind.openrc
+         bsmcoind.openrcconf
+CentOS:  bsmcoind.init
+OS X:    org.bsmcoin.bsmcoind.plist
 
 have been made available to assist packagers in creating node packages here.
 

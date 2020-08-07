@@ -1,5 +1,5 @@
-#ifndef NAVCOIN_DICTIONARY_H
-#define NAVCOIN_DICTIONARY_H
+#ifndef BSMCOIN_DICTIONARY_H
+#define BSMCOIN_DICTIONARY_H
 
 #include <array>
 #include <vector>
@@ -41,4 +41,4 @@ extern const dictionary_list all;
 
 } // namespace language
 
-#endif //NAVCOIN_DICTIONARY_H
+#endif //BSMCOIN_DICTIONARY_H

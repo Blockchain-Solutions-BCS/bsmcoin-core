@@ -13,7 +13,7 @@
 #include <serialize.h>
 #include <util.h>
 
-#include <test/test_navcoin.h>
+#include <test/test_bsmcoin.h>
 
 #include <stdint.h>
 

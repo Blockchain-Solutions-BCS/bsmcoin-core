@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef NAVCOIN_CONSENSUS_PARAMS_H
-#define NAVCOIN_CONSENSUS_PARAMS_H
+#ifndef BSMCOIN_CONSENSUS_PARAMS_H
+#define BSMCOIN_CONSENSUS_PARAMS_H
 
 #include <amount.h>
 #include <uint256.h>
@@ -47,9 +47,9 @@ static std::string sDeploymentsDesc[Consensus::MAX_VERSION_BITS_DEPLOYMENTS] = {
     "Starts the accumulation of coins on the Community Fund",
     "Cold Staking",
     "Spread the accumulation of coins on the Community Fund to save on block space",
-    "Increase the contributed amount to the Community Fund to 0.5NAV per block",
+    "Increase the contributed amount to the Community Fund to 0.5BSM per block",
     "NTP SYNC",
-    "Upgrade to POSv3. Every staked block will have a fixed reward of 2 NAV",
+    "Upgrade to POSv3. Every staked block will have a fixed reward of 2 BSM",
     "Reduce the Quorum necessary for the last cycles of the Community Fund votings",
     "Upgrades the Community Fund with a state based cache which will save on block space as votes do not need to be broadcasted every block",
     "Enable DAO Consultations",
@@ -139,4 +139,4 @@ struct Params {
 };
 } // namespace Consensus
 
-#endif // NAVCOIN_CONSENSUS_PARAMS_H
+#endif // BSMCOIN_CONSENSUS_PARAMS_H

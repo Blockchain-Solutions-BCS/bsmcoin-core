@@ -1,10 +1,10 @@
-# NavCoin v5.0.0 Release Notes
+# BsmCoin v5.0.0 Release Notes
 
 ## DAO Extension
 
-<[Pull Request 530](https://github.com/navcoin/navcoin-core/pull/530)>
+<[Pull Request 530](https://github.com/bsmcoin/bsmcoin-core/pull/530)>
 
-This PR includes a serie of Deployment Proposals as described in https://www.reddit.com/r/NavCoin/comments/bs4pvn/proposal_for_the_extension_of_the_community_fund/:
+This PR includes a serie of Deployment Proposals as described in https://www.reddit.com/r/BsmCoin/comments/bs4pvn/proposal_for_the_extension_of_the_community_fund/:
 
 - Adds support for abstaining in the votings. (Version Bit 19) - includes functional test
 
@@ -22,27 +22,27 @@ This PR includes a serie of Deployment Proposals as described in https://www.red
 
 ## Dandelion++
 
-<[Pull Request 588](https://github.com/navcoin/navcoin-core/pull/588)>
+<[Pull Request 588](https://github.com/bsmcoin/bsmcoin-core/pull/588)>
 
 This PR adds support for Dandelion as described in https://github.com/bitcoin/bips/blob/master/bip-0156.mediawiki
 
 ## Mnemonic startup GUI
 
-<[Pull Request 659](https://github.com/navcoin/navcoin-core/pull/659)>
+<[Pull Request 659](https://github.com/bsmcoin/bsmcoin-core/pull/659)>
 
 This PR adds a Startup GUI which allows for the ability to restore and create wallets with Mnemonic words. Mnemonic words are like a read readable master key for BIP32 a bitcoin proposal to make key generation derived from one key or a masterkey instead of being randomly created as before hand.
 
 ## Add tools page/dialog for running common commands for wallet repair/maintenance
 
-<[Pull Request 675](https://github.com/navcoin/navcoin-core/pull/675)>
+<[Pull Request 675](https://github.com/bsmcoin/bsmcoin-core/pull/675)>
 
 ## Update libcurl to v7.68.0 
 
-<[Pull Request 663](https://github.com/navcoin/navcoin-core/pull/663)>
+<[Pull Request 663](https://github.com/bsmcoin/bsmcoin-core/pull/663)>
 
 ## Rescan when importing mnemonic
 
-<[Pull Request 662](https://github.com/navcoin/navcoin-core/pull/662)>
+<[Pull Request 662](https://github.com/bsmcoin/bsmcoin-core/pull/662)>
 
-For additional information about new features, check [https://navcoin.org/en/notices/](https://navcoin.org/en/notices/) 
+For additional information about new features, check [https://bsmcoin.org/en/notices/](https://bsmcoin.org/en/notices/) 
 

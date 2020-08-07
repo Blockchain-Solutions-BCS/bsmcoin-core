@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef NAVCOIN_QT_BANTABLEMODEL_H
-#define NAVCOIN_QT_BANTABLEMODEL_H
+#ifndef BSMCOIN_QT_BANTABLEMODEL_H
+#define BSMCOIN_QT_BANTABLEMODEL_H
 
 #include <net.h>
 
@@ -70,4 +70,4 @@ private:
     std::unique_ptr<BanTablePriv> priv;
 };
 
-#endif // NAVCOIN_QT_BANTABLEMODEL_H
+#endif // BSMCOIN_QT_BANTABLEMODEL_H

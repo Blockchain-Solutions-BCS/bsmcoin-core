@@ -26,7 +26,7 @@ getAddressToReceive::getAddressToReceive(QWidget *parent) :
     LOCK(pwalletMain->cs_wallet);
     for(const PAIRTYPE(CTxDestination, CAddressBookData)& item: pwalletMain->mapAddressBook)
     {
-        const CNavCoinAddress& addressbook = item.first;
+        const CBsmCoinAddress& addressbook = item.first;
         bool fMine = IsMine(*pwalletMain, addressbook.Get());
         if(fMine)
         {
@@ -89,7 +89,7 @@ void getAddressToReceive::getColdStakingAddress()
 void getAddressToReceive::showQR()
 {
 #ifdef USE_QRCODE
-    QString uri = "navcoin:" + address;
+    QString uri = "bsmcoin:" + address;
     ui->lblQRCode->setText("");
     if(!uri.isEmpty())
     {

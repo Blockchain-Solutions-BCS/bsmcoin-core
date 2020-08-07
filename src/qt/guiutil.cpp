@@ -4,8 +4,8 @@
 
 #include <qt/guiutil.h>
 
-#include <qt/navcoinaddressvalidator.h>
-#include <qt/navcoinunits.h>
+#include <qt/bsmcoinaddressvalidator.h>
+#include <qt/bsmcoinunits.h>
 #include <qt/qvalidatedlineedit.h>
 #include <qt/walletmodel.h>
 
@@ -125,7 +125,7 @@ static std::string DummyAddress(const CChainParams &params)
     sourcedata.insert(sourcedata.end(), dummydata, dummydata + sizeof(dummydata));
     for(int i=0; i<256; ++i) { // Try every trailing byte
         std::string s = EncodeBase58(begin_ptr(sourcedata), end_ptr(sourcedata));
-        if (!CNavCoinAddress(s).IsValid())
+        if (!CBsmCoinAddress(s).IsValid())
             return s;
         sourcedata[sourcedata.size()-1] += 1;
     }
@@ -139,10 +139,10 @@ void setupAddressWidget(QValidatedLineEdit *widget, QWidget *parent)
     widget->setFont(fixedPitchFont());
     // We don't want translators to use own addresses in translations
     // and this is the only place, where this address is supplied.
-    widget->setPlaceholderText(QObject::tr("Enter a NavCoin address or OpenAlias address (e.g. %1)").arg(
+    widget->setPlaceholderText(QObject::tr("Enter a BsmCoin address or OpenAlias address (e.g. %1)").arg(
         QString::fromStdString(DummyAddress(Params()))));
-    widget->setValidator(new NavCoinAddressEntryValidator(parent));
-    widget->setCheckValidator(new NavCoinAddressCheckValidator(parent));
+    widget->setValidator(new BsmCoinAddressEntryValidator(parent));
+    widget->setCheckValidator(new BsmCoinAddressCheckValidator(parent));
 }
 
 void setupAmountWidget(QLineEdit *widget, QWidget *parent)
@@ -154,10 +154,10 @@ void setupAmountWidget(QLineEdit *widget, QWidget *parent)
     widget->setAlignment(Qt::AlignRight|Qt::AlignVCenter);
 }
 
-bool parseNavCoinURI(const QUrl &uri, SendCoinsRecipient *out)
+bool parseBsmCoinURI(const QUrl &uri, SendCoinsRecipient *out)
 {
-    // return if URI is not valid or is no navcoin: URI
-    if(!uri.isValid() || uri.scheme() != QString("navcoin"))
+    // return if URI is not valid or is no bsmcoin: URI
+    if(!uri.isValid() || uri.scheme() != QString("bsmcoin"))
         return false;
 
     SendCoinsRecipient rv;
@@ -193,7 +193,7 @@ bool parseNavCoinURI(const QUrl &uri, SendCoinsRecipient *out)
         {
             if(!i->second.isEmpty())
             {
-                if(!NavCoinUnits::parse(NavCoinUnits::NAV, i->second, &rv.amount))
+                if(!BsmCoinUnits::parse(BsmCoinUnits::BSM, i->second, &rv.amount))
                 {
                     return false;
                 }
@@ -211,20 +211,20 @@ bool parseNavCoinURI(const QUrl &uri, SendCoinsRecipient *out)
     return true;
 }
 
-bool parseNavCoinURI(QString uri, SendCoinsRecipient *out)
+bool parseBsmCoinURI(QString uri, SendCoinsRecipient *out)
 {
     QUrl uriInstance(uri);
-    return parseNavCoinURI(uriInstance, out);
+    return parseBsmCoinURI(uriInstance, out);
 }
 
-QString formatNavCoinURI(const SendCoinsRecipient &info)
+QString formatBsmCoinURI(const SendCoinsRecipient &info)
 {
-    QString ret = QString("navcoin:%1").arg(info.address);
+    QString ret = QString("bsmcoin:%1").arg(info.address);
     int paramCount = 0;
 
     if (info.amount)
     {
-        ret += QString("?amount=%1").arg(NavCoinUnits::format(NavCoinUnits::NAV, info.amount, false, NavCoinUnits::separatorNever));
+        ret += QString("?amount=%1").arg(BsmCoinUnits::format(BsmCoinUnits::BSM, info.amount, false, BsmCoinUnits::separatorNever));
         paramCount++;
     }
 
@@ -247,7 +247,7 @@ QString formatNavCoinURI(const SendCoinsRecipient &info)
 
 bool isDust(const QString& address, const CAmount& amount)
 {
-    CTxDestination dest = CNavCoinAddress(address.toStdString()).Get();
+    CTxDestination dest = CBsmCoinAddress(address.toStdString()).Get();
     CScript script = GetScriptForDestination(dest);
     CTxOut txOut(amount, script);
     return txOut.IsDust(::minRelayTxFee);
@@ -408,11 +408,11 @@ void openDebugLogfile()
         QDesktopServices::openUrl(QUrl::fromLocalFile(boostPathToQString(pathDebug)));
 }
 
-void openNavCoinConf()
+void openBsmCoinConf()
 {
      boost::filesystem::path pathConfig = GetConfigFile();
 
-     /* Open navcoin.conf with the associated application */
+     /* Open bsmcoin.conf with the associated application */
      if (boost::filesystem::exists(pathConfig))
          QDesktopServices::openUrl(QUrl::fromLocalFile(boostPathToQString(pathConfig)));
 }
@@ -572,15 +572,15 @@ boost::filesystem::path static StartupShortcutPath()
 {
     std::string chain = ChainNameFromCommandLine();
     if (chain == CBaseChainParams::MAIN)
-        return GetSpecialFolderPath(CSIDL_STARTUP) / "NavCoin.lnk";
+        return GetSpecialFolderPath(CSIDL_STARTUP) / "BsmCoin.lnk";
     if (chain == CBaseChainParams::TESTNET) // Remove this special case when CBaseChainParams::TESTNET = "testnet4"
-        return GetSpecialFolderPath(CSIDL_STARTUP) / "NavCoin (testnet).lnk";
-    return GetSpecialFolderPath(CSIDL_STARTUP) / strprintf("NavCoin (%s).lnk", chain);
+        return GetSpecialFolderPath(CSIDL_STARTUP) / "BsmCoin (testnet).lnk";
+    return GetSpecialFolderPath(CSIDL_STARTUP) / strprintf("BsmCoin (%s).lnk", chain);
 }
 
 bool GetStartOnSystemStartup()
 {
-    // check for NavCoin*.lnk
+    // check for BsmCoin*.lnk
     return boost::filesystem::exists(StartupShortcutPath());
 }
 
@@ -672,8 +672,8 @@ boost::filesystem::path static GetAutostartFilePath()
 {
     std::string chain = ChainNameFromCommandLine();
     if (chain == CBaseChainParams::MAIN)
-        return GetAutostartDir() / "navcoin.desktop";
-    return GetAutostartDir() / strprintf("navcoin-%s.lnk", chain);
+        return GetAutostartDir() / "bsmcoin.desktop";
+    return GetAutostartDir() / strprintf("bsmcoin-%s.lnk", chain);
 }
 
 bool GetStartOnSystemStartup()
@@ -712,13 +712,13 @@ bool SetStartOnSystemStartup(bool fAutoStart)
         if (!optionFile.good())
             return false;
         std::string chain = ChainNameFromCommandLine();
-        // Write a navcoin.desktop file to the autostart directory:
+        // Write a bsmcoin.desktop file to the autostart directory:
         optionFile << "[Desktop Entry]\n";
         optionFile << "Type=Application\n";
         if (chain == CBaseChainParams::MAIN)
-            optionFile << "Name=NavCoin\n";
+            optionFile << "Name=BsmCoin\n";
         else
-            optionFile << strprintf("Name=NavCoin (%s)\n", chain);
+            optionFile << strprintf("Name=BsmCoin (%s)\n", chain);
         optionFile << "Exec=" << pszExePath << strprintf(" -min -testnet=%d -regtest=%d -devnet=%d\n", GetBoolArg("-testnet", false), GetBoolArg("-regtest", false), GetBoolArg("-devnet", false));
         optionFile << "Terminal=false\n";
         optionFile << "Hidden=false\n";
@@ -737,7 +737,7 @@ bool SetStartOnSystemStartup(bool fAutoStart)
 LSSharedFileListItemRef findStartupItemInList(LSSharedFileListRef list, CFURLRef findUrl);
 LSSharedFileListItemRef findStartupItemInList(LSSharedFileListRef list, CFURLRef findUrl)
 {
-    // loop through the list of startup items and try to find the navcoin app
+    // loop through the list of startup items and try to find the bsmcoin app
     CFArrayRef listSnapshot = LSSharedFileListCopySnapshot(list, nullptr);
     for(int i = 0; i < CFArrayGetCount(listSnapshot); i++) {
         LSSharedFileListItemRef item = (LSSharedFileListItemRef)CFArrayGetValueAtIndex(listSnapshot, i);
@@ -769,21 +769,21 @@ LSSharedFileListItemRef findStartupItemInList(LSSharedFileListRef list, CFURLRef
 
 bool GetStartOnSystemStartup()
 {
-    CFURLRef navcoinAppUrl = CFBundleCopyBundleURL(CFBundleGetMainBundle());
+    CFURLRef bsmcoinAppUrl = CFBundleCopyBundleURL(CFBundleGetMainBundle());
     LSSharedFileListRef loginItems = LSSharedFileListCreate(NULL, kLSSharedFileListSessionLoginItems, nullptr);
-    LSSharedFileListItemRef foundItem = findStartupItemInList(loginItems, navcoinAppUrl);
+    LSSharedFileListItemRef foundItem = findStartupItemInList(loginItems, bsmcoinAppUrl);
     return !!foundItem; // return boolified object
 }
 
 bool SetStartOnSystemStartup(bool fAutoStart)
 {
-    CFURLRef navcoinAppUrl = CFBundleCopyBundleURL(CFBundleGetMainBundle());
+    CFURLRef bsmcoinAppUrl = CFBundleCopyBundleURL(CFBundleGetMainBundle());
     LSSharedFileListRef loginItems = LSSharedFileListCreate(NULL, kLSSharedFileListSessionLoginItems, nullptr);
-    LSSharedFileListItemRef foundItem = findStartupItemInList(loginItems, navcoinAppUrl);
+    LSSharedFileListItemRef foundItem = findStartupItemInList(loginItems, bsmcoinAppUrl);
 
     if(fAutoStart && !foundItem) {
-        // add navcoin app to startup item list
-        LSSharedFileListInsertItemURL(loginItems, kLSSharedFileListItemBeforeFirst, nullptr, nullptr, navcoinAppUrl, nullptr, nullptr);
+        // add bsmcoin app to startup item list
+        LSSharedFileListInsertItemURL(loginItems, kLSSharedFileListItemBeforeFirst, nullptr, nullptr, bsmcoinAppUrl, nullptr, nullptr);
     }
     else if(!fAutoStart && foundItem) {
         // remove item

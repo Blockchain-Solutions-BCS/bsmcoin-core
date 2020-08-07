@@ -7,13 +7,13 @@
 # Test node handling
 #
 
-from test_framework.test_framework import NavCoinTestFramework
+from test_framework.test_framework import BsmCoinTestFramework
 from test_framework.util import *
 
 import http.client
 import urllib.parse
 
-class NodeHandlingTest (NavCoinTestFramework):
+class NodeHandlingTest (BsmCoinTestFramework):
 
     def __init__(self):
         super().__init__()

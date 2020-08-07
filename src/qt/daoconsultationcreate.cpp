@@ -1,4 +1,4 @@
-// Copyright (c) 2019 The NavCoin Core developers
+// Copyright (c) 2019 The BsmCoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -14,7 +14,7 @@ DaoConsultationCreate::DaoConsultationCreate(QWidget *parent) :
     minLbl(new QLabel),
     maxLbl(new QLabel),
     warningLbl(new QLabel),
-    listWidget(new NavCoinListWidget(nullptr, "", [](QString s)->bool{return !s.isEmpty();})),
+    listWidget(new BsmCoinListWidget(nullptr, "", [](QString s)->bool{return !s.isEmpty();})),
     moreAnswersBox(new QCheckBox)
 {
     this->setSizePolicy(QSizePolicy::Maximum, QSizePolicy::Expanding);
@@ -84,7 +84,7 @@ DaoConsultationCreate::DaoConsultationCreate(QWidget *parent) :
     warningLbl->setObjectName("warning");
     warningLbl->setVisible(false);
 
-    listWidget = new NavCoinListWidget(this, tr("Possible answers"), [](QString s)->bool{return !s.isEmpty();});
+    listWidget = new BsmCoinListWidget(this, tr("Possible answers"), [](QString s)->bool{return !s.isEmpty();});
 
     layout->addWidget(topBox);
     layout->addSpacing(15);
@@ -113,7 +113,7 @@ DaoConsultationCreate::DaoConsultationCreate(QWidget *parent, QString title, int
     minLbl(new QLabel),
     maxLbl(new QLabel),
     warningLbl(new QLabel),
-    listWidget(new NavCoinListWidget(nullptr, "", [](QString s)->bool{return !s.isEmpty();})),
+    listWidget(new BsmCoinListWidget(nullptr, "", [](QString s)->bool{return !s.isEmpty();})),
     moreAnswersBox(new QCheckBox),
     cpos(consensuspos),
     title(title)
@@ -139,7 +139,7 @@ DaoConsultationCreate::DaoConsultationCreate(QWidget *parent, QString title, int
     warningLbl->setObjectName("warning");
     warningLbl->setVisible(false);
 
-    listWidget = new NavCoinListWidget(this, tr("Possible answers"), [this](QString s)->bool{
+    listWidget = new BsmCoinListWidget(this, tr("Possible answers"), [this](QString s)->bool{
             try
             {
                 return IsValidConsensusParameterProposal((Consensus::ConsensusParamsPos)cpos, RemoveFormatConsensusParameter((Consensus::ConsensusParamsPos)cpos, s.toStdString()), chainActive.Tip(), *pcoinsTip);
@@ -184,7 +184,7 @@ void DaoConsultationCreate::onCreate()
 
     CStateViewCache view(pcoinsTip);
 
-    CNavCoinAddress address("NQFqqMUD55ZV3PJEJZtaKCsQmjLT6JkjvJ"); // Dummy address
+    CBsmCoinAddress address("NQFqqMUD55ZV3PJEJZtaKCsQmjLT6JkjvJ"); // Dummy address
 
     CWalletTx wtx;
     bool fSubtractFeeFromAmount = false;
@@ -249,17 +249,17 @@ void DaoConsultationCreate::onCreate()
     if (curBalance <= GetConsensusParameter(Consensus::CONSENSUS_PARAM_CONSULTATION_MIN_FEE, view)) {
         QMessageBox msgBox(this);
         string fee = FormatMoney(nMinFee);
-        std::string str = tr("You require at least %1 NAV mature and available to create a consultation.\n").arg(QString::fromStdString(fee)).toStdString();
+        std::string str = tr("You require at least %1 BSM mature and available to create a consultation.\n").arg(QString::fromStdString(fee)).toStdString();
         msgBox.setText(tr(str.c_str()));
         msgBox.addButton(tr("Ok"), QMessageBox::AcceptRole);
         msgBox.setIcon(QMessageBox::Warning);
-        msgBox.setWindowTitle("Insufficient NAV");
+        msgBox.setWindowTitle("Insufficient BSM");
         msgBox.exec();
         return;
     }
 
     QMessageBox::StandardButton btnRetVal = QMessageBox::question(this, tr("Fee"),
-                                                                  tr("Creating this consultation would require to pay a fee of %1 NAV.").arg(QString::fromStdString(FormatMoney(nMinFee))) + "<br><br>" + tr("Do you want to proceed?"),
+                                                                  tr("Creating this consultation would require to pay a fee of %1 BSM.").arg(QString::fromStdString(FormatMoney(nMinFee))) + "<br><br>" + tr("Do you want to proceed?"),
                                                                   QMessageBox::Yes | QMessageBox::Cancel, QMessageBox::Cancel);
 
     if(btnRetVal == QMessageBox::Cancel)
@@ -343,7 +343,7 @@ void DaoConsultationCreate::onCreateConsensus()
     LOCK2(cs_main, pwalletMain->cs_wallet);
     CStateViewCache view(pcoinsTip);
 
-    CNavCoinAddress address("NQFqqMUD55ZV3PJEJZtaKCsQmjLT6JkjvJ"); // Dummy address
+    CBsmCoinAddress address("NQFqqMUD55ZV3PJEJZtaKCsQmjLT6JkjvJ"); // Dummy address
 
     CWalletTx wtx;
     bool fSubtractFeeFromAmount = false;
@@ -412,17 +412,17 @@ void DaoConsultationCreate::onCreateConsensus()
     if (curBalance <= nMinFee) {
         QMessageBox msgBox(this);
         string fee = FormatMoney(nMinFee);
-        std::string str = tr("You require at least %1 NAV mature and available to create a proposal for a consensus change.\n").arg(QString::fromStdString(fee)).toStdString();
+        std::string str = tr("You require at least %1 BSM mature and available to create a proposal for a consensus change.\n").arg(QString::fromStdString(fee)).toStdString();
         msgBox.setText(tr(str.c_str()));
         msgBox.addButton(tr("Ok"), QMessageBox::AcceptRole);
         msgBox.setIcon(QMessageBox::Warning);
-        msgBox.setWindowTitle("Insufficient NAV");
+        msgBox.setWindowTitle("Insufficient BSM");
         msgBox.exec();
         return;
     }
 
     QMessageBox::StandardButton btnRetVal = QMessageBox::question(this, tr("Fee"),
-                                                                  tr("Creating this consultation would require to pay a fee of %1 NAV.").arg(QString::fromStdString(FormatMoney(nMinFee))) + "<br><br>" + tr("Do you want to proceed?"),
+                                                                  tr("Creating this consultation would require to pay a fee of %1 BSM.").arg(QString::fromStdString(FormatMoney(nMinFee))) + "<br><br>" + tr("Do you want to proceed?"),
                                                                   QMessageBox::Yes | QMessageBox::Cancel, QMessageBox::Cancel);
 
     if(btnRetVal == QMessageBox::Cancel)

@@ -1,6 +1,6 @@
 // Copyright (c) 2010 Satoshi Nakamoto
 // Copyright (c) 2009-2015 The Bitcoin Core developers
-// Copyright (c) 2017-2018 The NavCoin Core developers
+// Copyright (c) 2017-2018 The BsmCoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -93,7 +93,7 @@ public:
         consensus.nMajorityRejectBlockOutdated = 950;
         consensus.nMajorityWindow = 1000;
         consensus.BIP34Height = 0;
-        consensus.BIP34Hash = uint256S("0x00006a4e3e18c71c6d48ad6c261e2254fa764cf29607a4357c99b712dfbb8e6a");
+        consensus.BIP34Hash = uint256S("0x000007a78b7a0e303e6eb1cd6af8207c822482f83572fc3c2a5143dd793ca288");
         consensus.powLimit = ArithToUint256(~arith_uint256(0) >> 16);
         consensus.nPowTargetTimespan = 10;
         consensus.nPowTargetSpacing = 10;
@@ -148,7 +148,7 @@ public:
         consensus.vParameters[Consensus::CONSENSUS_PARAM_CONSULTATION_MAX_SUPPORT_CYCLES].value = 4;
         consensus.vParameters[Consensus::CONSENSUS_PARAM_CONSULTATION_REFLECTION_LENGTH].value = 1;
         consensus.vParameters[Consensus::CONSENSUS_PARAM_GENERATION_PER_BLOCK].value = 2.5 * COIN;
-        consensus.vParameters[Consensus::CONSENSUS_PARAM_NAVNS_FEE].value = 100 * COIN;
+        consensus.vParameters[Consensus::CONSENSUS_PARAM_BSMNS_FEE].value = 100 * COIN;
         consensus.vParameters[Consensus::CONSENSUS_PARAMS_DAO_VOTE_LIGHT_MIN_FEE].value = 0.1 * COIN;
 
         /** Coinbase transaction outputs can only be spent after this number of new blocks (network rule) */
@@ -256,12 +256,12 @@ public:
         nPruneAfterHeight = 100000;
         bnProofOfWorkLimit = arith_uint256(~arith_uint256() >> 16);
 
-        genesis = CreateGenesisBlock(1460561040, 6945, 0x1f00ffff, 1, 0);
+        genesis = CreateGenesisBlock(1596792963, 255203, 0x1f00ffff, 1, 0);
 
 	      consensus.hashGenesisBlock = genesis.GetHash();
 
-        assert(consensus.hashGenesisBlock == uint256S("0x00006a4e3e18c71c6d48ad6c261e2254fa764cf29607a4357c99b712dfbb8e6a"));
-        assert(genesis.hashMerkleRoot == uint256S("0xc507eec6ccabfd5432d764afceafba42d2d946594b8a60570cb2358a7392c61a"));
+        assert(consensus.hashGenesisBlock == uint256S("0x000007a78b7a0e303e6eb1cd6af8207c822482f83572fc3c2a5143dd793ca288"));
+        assert(genesis.hashMerkleRoot == uint256S("0xb1fc78cf632b7a740d4f7cb923b510e172c5edf9377b30f6b59eb7adaca0f96b"));
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,25);
         base58Prefixes[COLDSTAKING_ADDRESS] = std::vector<unsigned char>(1,28); // cold staking addresses start with 'X'
@@ -272,8 +272,8 @@ public:
         base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x04)(0x88)(0xB2)(0x1E).convert_to_container<std::vector<unsigned char> >();
         base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x04)(0x88)(0xAD)(0xE4).convert_to_container<std::vector<unsigned char> >();
 
-        // vSeeds.push_back(CDNSSeedData("seed 1 nav.community", "seed.nav.community"));
-        // vSeeds.push_back(CDNSSeedData("seed 2 nav.community", "seed2.nav.community"));
+        // vSeeds.push_back(CDNSSeedData("seed 1 bsm.community", "seed.bsm.community"));
+        // vSeeds.push_back(CDNSSeedData("seed 2 bsm.community", "seed2.bsm.community"));
 
         vFixedSeeds = std::vector<SeedSpec6>(pnSeed6_main, pnSeed6_main + ARRAYLEN(pnSeed6_main));
 
@@ -358,7 +358,7 @@ public:
         consensus.vParameters[Consensus::CONSENSUS_PARAM_CONSULTATION_MAX_SUPPORT_CYCLES].value = 4;
         consensus.vParameters[Consensus::CONSENSUS_PARAM_CONSULTATION_REFLECTION_LENGTH].value = 1;
         consensus.vParameters[Consensus::CONSENSUS_PARAM_GENERATION_PER_BLOCK].value = 2.5 * COIN;
-        consensus.vParameters[Consensus::CONSENSUS_PARAM_NAVNS_FEE].value = 100 * COIN;
+        consensus.vParameters[Consensus::CONSENSUS_PARAM_BSMNS_FEE].value = 100 * COIN;
         consensus.vParameters[Consensus::CONSENSUS_PARAMS_DAO_VOTE_LIGHT_MIN_FEE].value = 0.1 * COIN;
 
         /** Coinbase transaction outputs can only be spent after this number of new blocks (network rule) */
@@ -472,8 +472,8 @@ public:
             printf("new testnet genesis hash: %s\n", genesis.GetHash().ToString().c_str());
         }
 
-        // vSeeds.push_back(CDNSSeedData("testnav.community", "testseed.nav.community"));
-        // vSeeds.push_back(CDNSSeedData("testnavcoin.org", "testseed.navcoin.org"));
+        // vSeeds.push_back(CDNSSeedData("testbsm.community", "testseed.bsm.community"));
+        // vSeeds.push_back(CDNSSeedData("testbsmcoin.org", "testseed.bsmcoin.org"));
 
         assert(consensus.hashGenesisBlock == hashGenesisBlock);
         assert(genesis.hashMerkleRoot == hashMerkleRoot);
@@ -577,7 +577,7 @@ public:
         consensus.vParameters[Consensus::CONSENSUS_PARAM_CONSULTATION_MAX_SUPPORT_CYCLES].value = 4;
         consensus.vParameters[Consensus::CONSENSUS_PARAM_CONSULTATION_REFLECTION_LENGTH].value = 1;
         consensus.vParameters[Consensus::CONSENSUS_PARAM_GENERATION_PER_BLOCK].value = 2.5 * COIN;
-        consensus.vParameters[Consensus::CONSENSUS_PARAM_NAVNS_FEE].value = 100 * COIN;
+        consensus.vParameters[Consensus::CONSENSUS_PARAM_BSMNS_FEE].value = 100 * COIN;
         consensus.vParameters[Consensus::CONSENSUS_PARAMS_DAO_VOTE_LIGHT_MIN_FEE].value = 0.1 * COIN;
 
         /** Coinbase transaction outputs can only be spent after this number of new blocks (network rule) */
@@ -682,7 +682,7 @@ public:
         uint256 hashMerkleRoot = uint256S("0x2d9101b87fe7b9deaea41849c1f3bed71e060739147802a238fe968f75ad0fd9");
         uint32_t nNonce = 2043198879;
         // 5) Rebuild. Launch daemon.
-        // 6) Generate first block using RPC command "./navcoin-cli generate 1"
+        // 6) Generate first block using RPC command "./bsmcoin-cli generate 1"
 
         genesis = CreateGenesisBlockTestnet(nTimestamp, nNonce, 0xffffffff, 1, 0);
         consensus.hashGenesisBlock = genesis.GetHash();
@@ -701,8 +701,8 @@ public:
             printf("use the new values to update CDevNetParams class in src/chainparams.cpp\n");
         }
 
-        // vSeeds.push_back(CDNSSeedData("devnav.community", "devseed.nav.community"));
-        // vSeeds.push_back(CDNSSeedData("devnet.navcoin.org", "devseed.navcoin.org"));
+        // vSeeds.push_back(CDNSSeedData("devbsm.community", "devseed.bsm.community"));
+        // vSeeds.push_back(CDNSSeedData("devnet.bsmcoin.org", "devseed.bsmcoin.org"));
 
         assert(consensus.hashGenesisBlock == hashGenesisBlock);
         assert(genesis.hashMerkleRoot == hashMerkleRoot);
@@ -806,7 +806,7 @@ public:
         consensus.vParameters[Consensus::CONSENSUS_PARAM_CONSULTATION_MAX_SUPPORT_CYCLES].value = 4;
         consensus.vParameters[Consensus::CONSENSUS_PARAM_CONSULTATION_REFLECTION_LENGTH].value = 1;
         consensus.vParameters[Consensus::CONSENSUS_PARAM_GENERATION_PER_BLOCK].value = 2.5 * COIN;
-        consensus.vParameters[Consensus::CONSENSUS_PARAM_NAVNS_FEE].value = 100 * COIN;
+        consensus.vParameters[Consensus::CONSENSUS_PARAM_BSMNS_FEE].value = 100 * COIN;
         consensus.vParameters[Consensus::CONSENSUS_PARAMS_DAO_VOTE_LIGHT_MIN_FEE].value = 0.1 * COIN;
 
         /** Coinbase transaction outputs can only be spent after this number of new blocks (network rule) */
@@ -918,8 +918,8 @@ public:
             hashMerkleRoot = genesis.hashMerkleRoot;
         }
 
-        // vSeeds.push_back(CDNSSeedData("testnav.community", "testseed.nav.community"));
-        // vSeeds.push_back(CDNSSeedData("testnavcoin.org", "testseed.navcoin.org"));
+        // vSeeds.push_back(CDNSSeedData("testbsm.community", "testseed.bsm.community"));
+        // vSeeds.push_back(CDNSSeedData("testbsmcoin.org", "testseed.bsmcoin.org"));
 
         consensus.hashGenesisBlock = genesis.GetHash();
 

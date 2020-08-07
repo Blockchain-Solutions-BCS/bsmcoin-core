@@ -1,14 +1,14 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2015 The Bitcoin Core developers
-// Copyright (c) 2018 The NavCoin Core developers
+// Copyright (c) 2018 The BsmCoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef NAVCOIN_MAIN_H
-#define NAVCOIN_MAIN_H
+#ifndef BSMCOIN_MAIN_H
+#define BSMCOIN_MAIN_H
 
 #if defined(HAVE_CONFIG_H)
-#include <config/navcoin-config.h>
+#include <config/bsmcoin-config.h>
 #endif
 
 #include <amount.h>
@@ -579,7 +579,7 @@ bool InvalidateBlock(CValidationState& state, const CChainParams& chainparams, C
 /** Remove invalidity status from a block and its descendants. */
 bool ResetBlockFailureFlags(CBlockIndex *pindex);
 
-// NAVCoin
+// BSMCoin
 
 inline unsigned int GetTargetSpacing(int nHeight) { return 30; }
 
@@ -688,4 +688,4 @@ std::vector<std::pair<uint256, int>>* InsertPaymentRequestVotes(const uint256& h
 std::map<uint256, bool>* InsertSupport(const uint256& hash);
 std::map<uint256, uint64_t>* InsertConsultationVotes(const uint256& hash);
 
-#endif // NAVCOIN_MAIN_H
+#endif // BSMCOIN_MAIN_H

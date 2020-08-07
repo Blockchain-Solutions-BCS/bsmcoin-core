@@ -1,0 +1,8 @@
+/usr/bin/bsmcoin-cli		--	gen_context(system_u:object_r:bsmcoin_exec_t,s0)
+/usr/sbin/bsmcoind		--	gen_context(system_u:object_r:bsmcoin_exec_t,s0)
+/usr/lib(64)?/bsmcoin/bsmcoind		--	gen_context(system_u:object_r:bsmcoin_exec_t,s0)
+
+/etc/bsmcoin(/.*)?		gen_context(system_u:object_r:bsmcoin_conf_t,s0)
+/var/lib/bsmcoin(/.*)?		gen_context(system_u:object_r:bsmcoin_var_lib_t,s0)
+
+(/var)?/run/bsmcoind(/.*)?   gen_context(system_u:object_r:bsmcoin_var_run_t,s0)

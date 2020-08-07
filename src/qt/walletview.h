@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef NAVCOIN_QT_WALLETVIEW_H
-#define NAVCOIN_QT_WALLETVIEW_H
+#ifndef BSMCOIN_QT_WALLETVIEW_H
+#define BSMCOIN_QT_WALLETVIEW_H
 
 #include <amount.h>
 #include <splitrewards.h>
@@ -11,7 +11,7 @@
 #include <QStackedWidget>
 #include <QPushButton>
 
-class NavCoinGUI;
+class BsmCoinGUI;
 class ClientModel;
 class OverviewPage;
 class OptionsDialog;
@@ -44,13 +44,13 @@ public:
     explicit WalletView(const PlatformStyle *platformStyle, QWidget *parent);
     ~WalletView();
 
-    void setNavCoinGUI(NavCoinGUI *gui);
+    void setBsmCoinGUI(BsmCoinGUI *gui);
     /** Set the client model.
         The client model represents the part of the core that communicates with the P2P network, and is wallet-agnostic.
     */
     void setClientModel(ClientModel *clientModel);
     /** Set the wallet model.
-        The wallet model represents a navcoin wallet, and offers access to the list of transactions, address book and sending
+        The wallet model represents a bsmcoin wallet, and offers access to the list of transactions, address book and sending
         functionality.
     */
     void setWalletModel(WalletModel *walletModel);
@@ -152,7 +152,7 @@ Q_SIGNALS:
 
     void openAddressHistory();
 
-    friend NavCoinGUI;
+    friend BsmCoinGUI;
 };
 
-#endif // NAVCOIN_QT_WALLETVIEW_H
+#endif // BSMCOIN_QT_WALLETVIEW_H

@@ -2,11 +2,11 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef NAVCOIN_QT_NOTIFICATOR_H
-#define NAVCOIN_QT_NOTIFICATOR_H
+#ifndef BSMCOIN_QT_NOTIFICATOR_H
+#define BSMCOIN_QT_NOTIFICATOR_H
 
 #if defined(HAVE_CONFIG_H)
-#include <config/navcoin-config.h>
+#include <config/bsmcoin-config.h>
 #endif
 
 #include <QIcon>
@@ -77,4 +77,4 @@ private:
 #endif
 };
 
-#endif // NAVCOIN_QT_NOTIFICATOR_H
+#endif // BSMCOIN_QT_NOTIFICATOR_H

@@ -1,0 +1,11 @@
+[Protocol]
+exec=bsmcoin-qt '%u'
+protocol=bsmcoin
+input=none
+output=none
+helper=true
+listing=
+reading=false
+writing=false
+makedir=false
+deleting=false

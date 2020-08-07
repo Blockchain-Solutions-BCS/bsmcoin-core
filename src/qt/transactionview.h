@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef NAVCOIN_QT_TRANSACTIONVIEW_H
-#define NAVCOIN_QT_TRANSACTIONVIEW_H
+#ifndef BSMCOIN_QT_TRANSACTIONVIEW_H
+#define BSMCOIN_QT_TRANSACTIONVIEW_H
 
 #include <qt/guiutil.h>
 
@@ -117,4 +117,4 @@ public Q_SLOTS:
 
 };
 
-#endif // NAVCOIN_QT_TRANSACTIONVIEW_H
+#endif // BSMCOIN_QT_TRANSACTIONVIEW_H

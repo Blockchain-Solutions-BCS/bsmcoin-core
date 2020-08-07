@@ -1,4 +1,4 @@
-// Copyright (c) 2018-2019 The NavCoin Core developers
+// Copyright (c) 2018-2019 The BsmCoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -11,7 +11,7 @@ enum ConsensusParamType
 {
     TYPE_NUMBER,
     TYPE_PERCENT,
-    TYPE_NAV,
+    TYPE_BSM,
     TYPE_BOOL
 };
 
@@ -46,7 +46,7 @@ enum ConsensusParamsPos
     CONSENSUS_PARAM_FUND_PERCENT_PER_BLOCK,
 
     CONSENSUS_PARAM_GENERATION_PER_BLOCK,
-    CONSENSUS_PARAM_NAVNS_FEE,
+    CONSENSUS_PARAM_BSMNS_FEE,
     CONSENSUS_PARAMS_DAO_VOTE_LIGHT_MIN_FEE,
 
     MAX_CONSENSUS_PARAMS
@@ -79,10 +79,10 @@ static std::string sConsensusParamsDesc[Consensus::MAX_CONSENSUS_PARAMS] = {
     "Maximum of voting cycles for payment request votings",
 
     "Frequency of the fund accumulation transaction",
-    "Percentage of generated NAV going to the Fund",
+    "Percentage of generated BSM going to the Fund",
 
-    "Amount of NAV generated per block",
-    "Yearly fee for registering a name in NavNS",
+    "Amount of BSM generated per block",
+    "Yearly fee for registering a name in BsmNS",
     "Minimum fee as a fund contribution to submit a DAO vote using a light wallet"
 };
 
@@ -97,28 +97,28 @@ static ConsensusParamType vConsensusParamsType[MAX_CONSENSUS_PARAMS] =
     TYPE_NUMBER,
     TYPE_NUMBER,
     TYPE_NUMBER,
-    TYPE_NAV,
+    TYPE_BSM,
 
-    TYPE_NAV,
+    TYPE_BSM,
 
     TYPE_PERCENT,
     TYPE_PERCENT,
     TYPE_PERCENT,
-    TYPE_NAV,
+    TYPE_BSM,
     TYPE_NUMBER,
 
     TYPE_PERCENT,
     TYPE_PERCENT,
     TYPE_PERCENT,
-    TYPE_NAV,
+    TYPE_BSM,
     TYPE_NUMBER,
 
     TYPE_NUMBER,
     TYPE_PERCENT,
 
-    TYPE_NAV,
-    TYPE_NAV,
-    TYPE_NAV
+    TYPE_BSM,
+    TYPE_BSM,
+    TYPE_BSM
 };
 }
 

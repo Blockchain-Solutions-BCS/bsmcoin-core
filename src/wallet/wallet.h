@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef NAVCOIN_WALLET_WALLET_H
-#define NAVCOIN_WALLET_WALLET_H
+#ifndef BSMCOIN_WALLET_WALLET_H
+#define BSMCOIN_WALLET_WALLET_H
 
 #include <amount.h>
 #include <mnemonic/mnemonic.h>
@@ -1068,4 +1068,4 @@ public:
     }
 };
 
-#endif // NAVCOIN_WALLET_WALLET_H
+#endif // BSMCOIN_WALLET_WALLET_H

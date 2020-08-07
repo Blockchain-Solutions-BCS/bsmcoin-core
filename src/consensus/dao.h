@@ -1,9 +1,9 @@
-// Copyright (c) 2018-2019 The NavCoin Core developers
+// Copyright (c) 2018-2019 The BsmCoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef NAVCOIN_DAO_H
-#define NAVCOIN_DAO_H
+#ifndef BSMCOIN_DAO_H
+#define BSMCOIN_DAO_H
 
 #include "amount.h"
 #include "script/script.h"
@@ -999,4 +999,4 @@ public:
     }
 };
 
-#endif // NAVCOIN_DAO_H
+#endif // BSMCOIN_DAO_H

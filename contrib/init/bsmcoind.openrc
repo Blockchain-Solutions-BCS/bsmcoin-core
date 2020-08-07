@@ -1,0 +1,92 @@
+#!/sbin/runscript
+
+# backward compatibility for existing gentoo layout 
+#
+if [ -d "/var/lib/bsmcoin/.bsmcoin" ]; then
+	BSMCOIND_DEFAULT_DATADIR="/var/lib/bsmcoin/.bsmcoin"
+else
+	BSMCOIND_DEFAULT_DATADIR="/var/lib/bsmcoind"
+fi
+
+BSMCOIND_CONFIGFILE=${BSMCOIND_CONFIGFILE:-/etc/bsmcoin/bsmcoin.conf}
+BSMCOIND_PIDDIR=${BSMCOIND_PIDDIR:-/var/run/bsmcoind}
+BSMCOIND_PIDFILE=${BSMCOIND_PIDFILE:-${BSMCOIND_PIDDIR}/bsmcoind.pid}
+BSMCOIND_DATADIR=${BSMCOIND_DATADIR:-${BSMCOIND_DEFAULT_DATADIR}}
+BSMCOIND_USER=${BSMCOIND_USER:-${BSMCOIN_USER:-bsmcoin}}
+BSMCOIND_GROUP=${BSMCOIND_GROUP:-bsmcoin}
+BSMCOIND_BIN=${BSMCOIND_BIN:-/usr/bin/bsmcoind}
+BSMCOIND_NICE=${BSMCOIND_NICE:-${NICELEVEL:-0}}
+BSMCOIND_OPTS="${BSMCOIND_OPTS:-${BSMCOIN_OPTS}}"
+
+name="BsmCoin Core Daemon"
+description="BsmCoin cryptocurrency P2P network daemon"
+
+command="/usr/bin/bsmcoind"
+command_args="-pid=\"${BSMCOIND_PIDFILE}\" \
+		-conf=\"${BSMCOIND_CONFIGFILE}\" \
+		-datadir=\"${BSMCOIND_DATADIR}\" \
+		-daemon \
+		${BSMCOIND_OPTS}"
+
+required_files="${BSMCOIND_CONFIGFILE}"
+start_stop_daemon_args="-u ${BSMCOIND_USER} \
+			-N ${BSMCOIND_NICE} -w 2000"
+pidfile="${BSMCOIND_PIDFILE}"
+
+# The retry schedule to use when stopping the daemon. Could be either
+# a timeout in seconds or multiple signal/timeout pairs (like
+# "SIGKILL/180 SIGTERM/300")
+retry="${BSMCOIND_SIGTERM_TIMEOUT}"
+
+depend() {
+	need localmount net
+}
+
+# verify
+# 1) that the datadir exists and is writable (or create it)
+# 2) that a directory for the pid exists and is writable
+# 3) ownership and permissions on the config file
+start_pre() {
+	checkpath \
+	-d \
+	--mode 0750 \
+	--owner "${BSMCOIND_USER}:${BSMCOIND_GROUP}" \
+	"${BSMCOIND_DATADIR}"
+
+	checkpath \
+	-d \
+	--mode 0755 \
+	--owner "${BSMCOIND_USER}:${BSMCOIND_GROUP}" \
+	"${BSMCOIND_PIDDIR}"
+
+	checkpath -f \
+	-o ${BSMCOIND_USER}:${BSMCOIND_GROUP} \
+	-m 0660 \
+	${BSMCOIND_CONFIGFILE}
+
+	checkconfig || return 1
+}
+
+checkconfig()
+{
+	if ! grep -qs '^rpcpassword=' "${BSMCOIND_CONFIGFILE}" ; then
+		eerror ""
+		eerror "ERROR: You must set a secure rpcpassword to run bsmcoind."
+		eerror "The setting must appear in ${BSMCOIND_CONFIGFILE}"
+		eerror ""
+		eerror "This password is security critical to securing wallets "
+		eerror "and must not be the same as the rpcuser setting."
+		eerror "You can generate a suitable random password using the following"
+		eerror "command from the shell:"
+		eerror ""
+		eerror "bash -c 'tr -dc a-zA-Z0-9 < /dev/urandom | head -c32 && echo'"
+		eerror ""
+		eerror "It is also recommended that you also set alertnotify so you are "
+		eerror "notified of problems:"
+		eerror ""
+		eerror "ie: alertnotify=echo %%s | mail -s \"BsmCoin Alert\"" \
+			"admin@foo.com"
+		eerror ""
+		return 1
+	fi
+}

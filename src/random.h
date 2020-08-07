@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef NAVCOIN_RANDOM_H
-#define NAVCOIN_RANDOM_H
+#ifndef BSMCOIN_RANDOM_H
+#define BSMCOIN_RANDOM_H
 
 #include <crypto/chacha20.h>
 #include <uint256.h>
@@ -154,4 +154,4 @@ public:
     inline uint64_t operator()() noexcept { return rand64(); }
 };
 
-#endif // NAVCOIN_RANDOM_H
+#endif // BSMCOIN_RANDOM_H

@@ -37,7 +37,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QLabel" name="labelNavCoinAddressTitle">
+      <widget class="QLabel" name="labelBsmCoinAddressTitle">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
          <horstretch>0</horstretch>
@@ -51,12 +51,12 @@
         </font>
        </property>
        <property name="text">
-        <string>NavCoin Address:</string>
+        <string>BsmCoin Address:</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QValidatedLineEdit" name="lineEditNavcoinAddress"/>
+      <widget class="QValidatedLineEdit" name="lineEditBsmcoinAddress"/>
      </item>
      <item>
       <widget class="QLabel" name="labelRequestedAmountTitle">
@@ -73,12 +73,12 @@
         </font>
        </property>
        <property name="text">
-        <string>Requested Amount (NAV):</string>
+        <string>Requested Amount (BSM):</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="NavCoinAmountField" name="lineEditRequestedAmount"/>
+      <widget class="BsmCoinAmountField" name="lineEditRequestedAmount"/>
      </item>
      <item>
       <widget class="QLabel" name="labelDescriptionTitle">
@@ -198,7 +198,7 @@
           </font>
          </property>
          <property name="text">
-          <string>By submitting the proposal a X NAV deduction will occur from your wallet </string>
+          <string>By submitting the proposal a X BSM deduction will occur from your wallet </string>
          </property>
          <property name="wordWrap">
           <bool>true</bool>
@@ -213,9 +213,9 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>NavCoinAmountField</class>
+   <class>BsmCoinAmountField</class>
    <extends>QLineEdit</extends>
-   <header>navcoinamountfield.h</header>
+   <header>bsmcoinamountfield.h</header>
    <container>1</container>
   </customwidget>
   <customwidget>

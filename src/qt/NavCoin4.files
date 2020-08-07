@@ -95,7 +95,7 @@ moc_utilitydialog.cpp
 moc_walletframe.cpp
 moc_walletmodel.cpp
 moc_walletview.cpp
-navcoin.cpp
+bsmcoin.cpp
 navcoinaddressvalidator.cpp
 navcoinaddressvalidator.h
 navcoinamountfield.cpp

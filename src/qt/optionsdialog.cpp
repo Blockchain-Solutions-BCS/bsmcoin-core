@@ -3,14 +3,14 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #if defined(HAVE_CONFIG_H)
-#include <config/navcoin-config.h>
+#include <config/bsmcoin-config.h>
 #endif
 
 #include <qt/optionsdialog.h>
 #include <ui_optionsdialog.h>
 
 #include <qt/guiutil.h>
-#include <qt/navcoinunits.h>
+#include <qt/bsmcoinunits.h>
 #include <qt/optionsmodel.h>
 #include <qt/platformstyle.h>
 
@@ -95,8 +95,8 @@ OptionsDialog::OptionsDialog(const PlatformStyle *platformStyle, QWidget *parent
     /* Display elements init */
     QDir translations(":translations");
 
-    ui->navcoinAtStartup->setToolTip(ui->navcoinAtStartup->toolTip().arg(tr(PACKAGE_NAME)));
-    ui->navcoinAtStartup->setText(ui->navcoinAtStartup->text().arg(tr(PACKAGE_NAME)));
+    ui->bsmcoinAtStartup->setToolTip(ui->bsmcoinAtStartup->toolTip().arg(tr(PACKAGE_NAME)));
+    ui->bsmcoinAtStartup->setText(ui->bsmcoinAtStartup->text().arg(tr(PACKAGE_NAME)));
 
     // Add the themes that we support
     ui->theme->addItem(tr("Light") + "("+ tr("default") + ")", QVariant("light"));
@@ -121,9 +121,9 @@ OptionsDialog::OptionsDialog(const PlatformStyle *platformStyle, QWidget *parent
         }
     }
 
-    ui->thirdPartyTxUrls->setPlaceholderText("https://www.navexplorer.com/tx/%s");
+    ui->thirdPartyTxUrls->setPlaceholderText("https://www.bsmexplorer.com/tx/%s");
 
-    ui->unit->setModel(new NavCoinUnits(this));
+    ui->unit->setModel(new BsmCoinUnits(this));
 
     /* Widget-to-option mapper */
     mapper = new QDataWidgetMapper(this);
@@ -189,7 +189,7 @@ void OptionsDialog::setModel(OptionsModel *model)
     connect(ui->thirdPartyTxUrls, SIGNAL(textChanged(const QString &)), this, SLOT(showRestartWarning()));
 
     /* Main */
-    connect(ui->navcoinAtStartup, SIGNAL(clicked(bool)), this, SLOT(markModelDirty()));
+    connect(ui->bsmcoinAtStartup, SIGNAL(clicked(bool)), this, SLOT(markModelDirty()));
     connect(ui->threadsScriptVerif, SIGNAL(valueChanged(int)), this, SLOT(markModelDirty()));
     connect(ui->databaseCache, SIGNAL(valueChanged(int)), this, SLOT(markModelDirty()));
 
@@ -227,7 +227,7 @@ void OptionsDialog::setModel(OptionsModel *model)
 void OptionsDialog::setMapper()
 {
     /* Main */
-    mapper->addMapping(ui->navcoinAtStartup, OptionsModel::StartAtStartup);
+    mapper->addMapping(ui->bsmcoinAtStartup, OptionsModel::StartAtStartup);
     mapper->addMapping(ui->threadsScriptVerif, OptionsModel::ThreadsScriptVerif);
     mapper->addMapping(ui->databaseCache, OptionsModel::DatabaseCache);
 
@@ -300,12 +300,12 @@ void OptionsDialog::on_okButton_clicked()
     QMessageBox::information(this, tr("Changes saved"), tr("Changes have been saved!"));
 }
 
-void OptionsDialog::on_openNavCoinConfButton_clicked()
+void OptionsDialog::on_openBsmCoinConfButton_clicked()
 {
     QMessageBox::information(this, tr("Configuration options"),
             tr("The configuration is used to specify advanced user options less any command-line or Qt options. "
                 "Any command-line options will override this configuration file."));
-    GUIUtil::openNavCoinConf();
+    GUIUtil::openBsmCoinConf();
 }
 
 void OptionsDialog::on_cancelButton_clicked()

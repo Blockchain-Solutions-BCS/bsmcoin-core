@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef NAVCOIN_TXMEMPOOL_H
-#define NAVCOIN_TXMEMPOOL_H
+#ifndef BSMCOIN_TXMEMPOOL_H
+#define BSMCOIN_TXMEMPOOL_H
 
 #include <list>
 #include <memory>
@@ -755,4 +755,4 @@ struct TxCoinAgePriorityCompare
     }
 };
 
-#endif // NAVCOIN_TXMEMPOOL_H
+#endif // BSMCOIN_TXMEMPOOL_H

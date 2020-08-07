@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-# Copyright (c) 2018 The Navcoin Core developers
+# Copyright (c) 2018 The Bsmcoin Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-from test_framework.test_framework import NavCoinTestFramework
+from test_framework.test_framework import BsmCoinTestFramework
 from test_framework.staticr_util import *
 
-class ImportAddressTest(NavCoinTestFramework):
+class ImportAddressTest(BsmCoinTestFramework):
 
     def __init__(self):
         super().__init__()
@@ -48,7 +48,7 @@ class ImportAddressTest(NavCoinTestFramework):
         # Create the cold address
         coldstaking_address = self.nodes[0].getcoldstakingaddress(staking_address, spending_address)
 
-        # Send some nav to new addresses
+        # Send some bsm to new addresses
         self.nodes[0].sendtoaddress(address, 512)
         self.nodes[0].sendtoaddress(coldstaking_address, 256)
         self.nodes[0].sendtoaddress(coldstaking_address, 128)

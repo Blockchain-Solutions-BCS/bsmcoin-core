@@ -5,12 +5,12 @@
 
 #
 # Helper script to create the cache
-# (see NavCoinTestFramework.setup_chain)
+# (see BsmCoinTestFramework.setup_chain)
 #
 
-from test_framework.test_framework import NavCoinTestFramework
+from test_framework.test_framework import BsmCoinTestFramework
 
-class CreateCache(NavCoinTestFramework):
+class CreateCache(BsmCoinTestFramework):
 
     def setup_network(self):
         # Don't setup any test nodes

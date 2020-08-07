@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef NAVCOIN_QT_WALLETMODEL_H
-#define NAVCOIN_QT_WALLETMODEL_H
+#ifndef BSMCOIN_QT_WALLETMODEL_H
+#define BSMCOIN_QT_WALLETMODEL_H
 
 #include <qt/paymentrequestplus.h>
 #include <qt/walletmodeltransaction.h>
@@ -100,7 +100,7 @@ public:
     }
 };
 
-/** Interface to NavCoin wallet from Qt view code. */
+/** Interface to BsmCoin wallet from Qt view code. */
 class WalletModel : public QObject
 {
     Q_OBJECT
@@ -279,4 +279,4 @@ public Q_SLOTS:
     void pollBalanceChanged();
 };
 
-#endif // NAVCOIN_QT_WALLETMODEL_H
+#endif // BSMCOIN_QT_WALLETMODEL_H

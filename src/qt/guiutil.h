@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef NAVCOIN_QT_GUIUTIL_H
-#define NAVCOIN_QT_GUIUTIL_H
+#ifndef BSMCOIN_QT_GUIUTIL_H
+#define BSMCOIN_QT_GUIUTIL_H
 
 #include <amount.h>
 
@@ -31,7 +31,7 @@ class QUrl;
 class QWidget;
 QT_END_NAMESPACE
 
-/** Utility functions used by the NavCoin Qt UI.
+/** Utility functions used by the BsmCoin Qt UI.
  */
 namespace GUIUtil
 {
@@ -49,10 +49,10 @@ namespace GUIUtil
     void setupAddressWidget(QValidatedLineEdit *widget, QWidget *parent);
     void setupAmountWidget(QLineEdit *widget, QWidget *parent);
 
-    // Parse "navcoin:" URI into recipient object, return true on successful parsing
-    bool parseNavCoinURI(const QUrl &uri, SendCoinsRecipient *out);
-    bool parseNavCoinURI(QString uri, SendCoinsRecipient *out);
-    QString formatNavCoinURI(const SendCoinsRecipient &info);
+    // Parse "bsmcoin:" URI into recipient object, return true on successful parsing
+    bool parseBsmCoinURI(const QUrl &uri, SendCoinsRecipient *out);
+    bool parseBsmCoinURI(QString uri, SendCoinsRecipient *out);
+    QString formatBsmCoinURI(const SendCoinsRecipient &info);
 
     // Returns true if given address+amount meets "dust" definition
     bool isDust(const QString& address, const CAmount& amount);
@@ -120,7 +120,7 @@ namespace GUIUtil
     void openDebugLogfile();
 
     // Open the config file
-    void openNavCoinConf();
+    void openBsmCoinConf();
 
     // Replace invalid default fonts with known good ones
     void SubstituteFonts(const QString& language);
@@ -241,4 +241,4 @@ namespace GUIUtil
 
 } // namespace GUIUtil
 
-#endif // NAVCOIN_QT_GUIUTIL_H
+#endif // BSMCOIN_QT_GUIUTIL_H

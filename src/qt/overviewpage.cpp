@@ -5,7 +5,7 @@
 #include <qt/overviewpage.h>
 #include <ui_overviewpage.h>
 
-#include <qt/navcoinunits.h>
+#include <qt/bsmcoinunits.h>
 #include <qt/clientmodel.h>
 #include <qt/guiconstants.h>
 #include <qt/guiutil.h>
@@ -30,7 +30,7 @@ class TxViewDelegate : public QAbstractItemDelegate
     Q_OBJECT
 public:
     TxViewDelegate(const PlatformStyle *platformStyle):
-        QAbstractItemDelegate(), unit(NavCoinUnits::NAV),
+        QAbstractItemDelegate(), unit(BsmCoinUnits::BSM),
         platformStyle(platformStyle)
     {
 
@@ -88,7 +88,7 @@ public:
             foreground = COLOR_POSITIVE;
         }
         painter->setPen(foreground);
-        QString amountText = NavCoinUnits::formatWithUnit(unit, amount, true, NavCoinUnits::separatorAlways);
+        QString amountText = BsmCoinUnits::formatWithUnit(unit, amount, true, BsmCoinUnits::separatorAlways);
         painter->drawText(amountRect, Qt::AlignRight|Qt::AlignVCenter, amountText);
 
         painter->setPen(option.palette.color(QPalette::Text));
@@ -181,12 +181,12 @@ void OverviewPage::setBalance(
     currentWatchUnconfBalance = watchUnconfBalance;
     currentWatchImmatureBalance = watchImmatureBalance;
     currentWatchOnlyTotalBalance = watchOnlyBalance + watchUnconfBalance + watchImmatureBalance;
-    ui->labelBalance->setText(NavCoinUnits::formatWithUnit(unit, balance, false, NavCoinUnits::separatorAlways));
-    ui->labelUnconfirmed->setText(NavCoinUnits::formatWithUnit(unit, unconfirmedBalance, false, NavCoinUnits::separatorAlways));
-    ui->labelColdStaking->setText(NavCoinUnits::formatWithUnit(unit, currentColdStakingBalance, false, NavCoinUnits::separatorAlways));
-    ui->labelImmature->setText(NavCoinUnits::formatWithUnit(unit, currentImmatureBalance, false, NavCoinUnits::separatorAlways));
-    ui->labelWatchedBalance->setText(NavCoinUnits::formatWithUnit(unit, currentWatchOnlyTotalBalance, false, NavCoinUnits::separatorAlways));
-    ui->labelTotal->setText(NavCoinUnits::formatWithUnit(unit, currentTotalBalance + currentWatchOnlyTotalBalance, false, NavCoinUnits::separatorAlways));
+    ui->labelBalance->setText(BsmCoinUnits::formatWithUnit(unit, balance, false, BsmCoinUnits::separatorAlways));
+    ui->labelUnconfirmed->setText(BsmCoinUnits::formatWithUnit(unit, unconfirmedBalance, false, BsmCoinUnits::separatorAlways));
+    ui->labelColdStaking->setText(BsmCoinUnits::formatWithUnit(unit, currentColdStakingBalance, false, BsmCoinUnits::separatorAlways));
+    ui->labelImmature->setText(BsmCoinUnits::formatWithUnit(unit, currentImmatureBalance, false, BsmCoinUnits::separatorAlways));
+    ui->labelWatchedBalance->setText(BsmCoinUnits::formatWithUnit(unit, currentWatchOnlyTotalBalance, false, BsmCoinUnits::separatorAlways));
+    ui->labelTotal->setText(BsmCoinUnits::formatWithUnit(unit, currentTotalBalance + currentWatchOnlyTotalBalance, false, BsmCoinUnits::separatorAlways));
 
     updateStakeReportNow();
 
@@ -234,7 +234,7 @@ void OverviewPage::setWalletModel(WalletModel *model)
         connect(model, SIGNAL(notifyWatchonlyChanged(bool)), this, SLOT(updateWatchOnlyLabels(bool)));
     }
 
-    // update the display unit, to not use the default ("NAV")
+    // update the display unit, to not use the default ("BSM")
     updateDisplayUnit();
 }
 
@@ -310,12 +310,12 @@ void OverviewPage::updateStakeReport(bool fImmediate=false)
     uint64_t nExpectedTime = staking ? (GetTargetSpacing(pindexBestHeader->nHeight) * nNetworkWeight / nWeight) : 0;
     CAmount nExpectedDailyReward = staking ? ((double) 86400 / (nExpectedTime + 1)) * GetStakingRewardPerBlock(view) : 0.0;
 
-    ui->label24hStakingStats->setText(NavCoinUnits::formatWithUnit(unit, amount24h, false, NavCoinUnits::separatorAlways));
-    ui->label7dStakingStats->setText(NavCoinUnits::formatWithUnit(unit, amount7d, false, NavCoinUnits::separatorAlways));
-    ui->label30dStakingStats->setText(NavCoinUnits::formatWithUnit(unit, amount30d, false, NavCoinUnits::separatorAlways));
-    ui->label1yStakingStats->setText(NavCoinUnits::formatWithUnit(unit, amount1y, false, NavCoinUnits::separatorAlways));
-    ui->labelallStakingStats->setText(NavCoinUnits::formatWithUnit(unit, amountAll, false, NavCoinUnits::separatorAlways));
-    ui->labelExpectedStakingStats->setText(NavCoinUnits::formatWithUnit(unit, nExpectedDailyReward, false, NavCoinUnits::separatorAlways));
+    ui->label24hStakingStats->setText(BsmCoinUnits::formatWithUnit(unit, amount24h, false, BsmCoinUnits::separatorAlways));
+    ui->label7dStakingStats->setText(BsmCoinUnits::formatWithUnit(unit, amount7d, false, BsmCoinUnits::separatorAlways));
+    ui->label30dStakingStats->setText(BsmCoinUnits::formatWithUnit(unit, amount30d, false, BsmCoinUnits::separatorAlways));
+    ui->label1yStakingStats->setText(BsmCoinUnits::formatWithUnit(unit, amount1y, false, BsmCoinUnits::separatorAlways));
+    ui->labelallStakingStats->setText(BsmCoinUnits::formatWithUnit(unit, amountAll, false, BsmCoinUnits::separatorAlways));
+    ui->labelExpectedStakingStats->setText(BsmCoinUnits::formatWithUnit(unit, nExpectedDailyReward, false, BsmCoinUnits::separatorAlways));
 
     uiInterface.SetStaked(amountAll, amount24h, amount7d);
 }

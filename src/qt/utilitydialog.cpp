@@ -3,14 +3,14 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #if defined(HAVE_CONFIG_H)
-#include <config/navcoin-config.h>
+#include <config/bsmcoin-config.h>
 #endif
 
 #include <qt/utilitydialog.h>
 
 #include <ui_helpmessagedialog.h>
 
-#include <qt/navcoingui.h>
+#include <qt/bsmcoingui.h>
 #include <qt/clientmodel.h>
 #include <qt/guiconstants.h>
 #include <qt/paymentrequestplus.h>
@@ -69,14 +69,14 @@ HelpMessageDialog::HelpMessageDialog(QWidget *parent, bool about) :
     } else {
         setWindowTitle(tr("Command-line options"));
         QString header = tr("Usage:") + "\n" +
-            "  navcoin-qt [" + tr("command-line options") + "]                     " + "\n";
+            "  bsmcoin-qt [" + tr("command-line options") + "]                     " + "\n";
         QTextCursor cursor(ui->helpMessage->document());
         cursor.insertText(version);
         cursor.insertBlock();
         cursor.insertText(header);
         cursor.insertBlock();
 
-        std::string strUsage = HelpMessage(HMM_NAVCOIN_QT);
+        std::string strUsage = HelpMessage(HMM_BSMCOIN_QT);
         const bool showDebug = GetBoolArg("-help-debug", false);
         strUsage += HelpMessageGroup(tr("UI Options:").toStdString());
         if (showDebug) {
@@ -166,7 +166,7 @@ ShutdownWindow::ShutdownWindow(QWidget *parent, Qt::WindowFlags f):
     setLayout(layout);
 }
 
-void ShutdownWindow::showShutdownWindow(NavCoinGUI *window)
+void ShutdownWindow::showShutdownWindow(BsmCoinGUI *window)
 {
     if (!window)
         return;

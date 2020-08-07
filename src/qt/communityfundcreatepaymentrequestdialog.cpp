@@ -8,7 +8,7 @@
 #include <QComboBox>
 #include <string>
 
-#include <qt/navcoinunits.h>
+#include <qt/bsmcoinunits.h>
 
 #include <base58.h>
 #include <consensus/dao.h>
@@ -131,7 +131,7 @@ void CommunityFundCreatePaymentRequestDialog::click_pushButtonSubmitPaymentReque
         }
 
         // Get Address
-        CNavCoinAddress address(proposal.GetOwnerAddress());
+        CBsmCoinAddress address(proposal.GetOwnerAddress());
         if(!address.IsValid()) {
             QMessageBox msgBox(this);
             std::string str = "The address of the Proposal is not valid\n";
@@ -184,7 +184,7 @@ void CommunityFundCreatePaymentRequestDialog::click_pushButtonSubmitPaymentReque
 
         // Construct Secret
         std::string Secret = sRandom + "I kindly ask to withdraw " +
-                std::to_string(nReqAmount) + "NAV from the proposal " +
+                std::to_string(nReqAmount) + "BSM from the proposal " +
                 proposal.hash.ToString() + ". Payment request id: " + id;
 
         CHashWriter ss(SER_GETHASH, 0);
@@ -212,12 +212,12 @@ void CommunityFundCreatePaymentRequestDialog::click_pushButtonSubmitPaymentReque
         // Validate requested amount
         if (nReqAmount <= 0 || nReqAmount > proposal.GetAvailable(coins, true)) {
             QMessageBox msgBox(this);
-            QString str = tr("Requested amount must be greater than 0 NAV (Zero)\n");
+            QString str = tr("Requested amount must be greater than 0 BSM (Zero)\n");
             if (nReqAmount > proposal.GetAvailable(*pcoinsTip, true)) {
                 str = tr("Requested amount %1 is more than avaible coins in the proposal (%2)\n")
                     .arg(
-                        NavCoinUnits::formatWithUnit(NavCoinUnits::NAV, nReqAmount),
-                        NavCoinUnits::formatWithUnit(NavCoinUnits::NAV, proposal.GetAvailable(*pcoinsTip, true))
+                        BsmCoinUnits::formatWithUnit(BsmCoinUnits::BSM, nReqAmount),
+                        BsmCoinUnits::formatWithUnit(BsmCoinUnits::BSM, proposal.GetAvailable(*pcoinsTip, true))
                     );
             }
             msgBox.setText(str);
@@ -268,11 +268,11 @@ void CommunityFundCreatePaymentRequestDialog::click_pushButtonSubmitPaymentReque
         if (curBalance <= 10000) {
             QMessageBox msgBox(this);
             string fee = FormatMoney(GetConsensusParameter(Consensus::CONSENSUS_PARAM_PAYMENT_REQUEST_MIN_FEE, coins));
-            std::string str = tr("You require at least %1 NAV mature and available to create a payment request\n").arg(QString::fromStdString(fee)).toStdString();
+            std::string str = tr("You require at least %1 BSM mature and available to create a payment request\n").arg(QString::fromStdString(fee)).toStdString();
             msgBox.setText(tr(str.c_str()));
             msgBox.addButton(tr("Ok"), QMessageBox::AcceptRole);
             msgBox.setIcon(QMessageBox::Warning);
-            msgBox.setWindowTitle("Insufficient NAV");
+            msgBox.setWindowTitle("Insufficient BSM");
             msgBox.exec();
             return;
         }
@@ -292,7 +292,7 @@ void CommunityFundCreatePaymentRequestDialog::click_pushButtonSubmitPaymentReque
             }
             else {
                 // User accepted making the prequest
-                // Parse NavCoin address
+                // Parse BsmCoin address
                 CScript CFContributionScript;
                 CScript scriptPubKey = GetScriptForDestination(address.Get());
                 SetScriptForCommunityFundContribution(scriptPubKey);

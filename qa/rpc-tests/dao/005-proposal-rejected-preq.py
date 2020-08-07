@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-# Copyright (c) 2019 The Navcoin Core developers
+# Copyright (c) 2019 The Bsmcoin Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 import sys, os #include the parent folder so the test_framework is available
 sys.path.insert(1, os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..')))
 
-from test_framework.test_framework import NavCoinTestFramework
+from test_framework.test_framework import BsmCoinTestFramework
 from test_framework.cfund_util import *
 
 from dao.given import *
@@ -15,7 +15,7 @@ from dao.then import *
 
 import time
 
-class CFund005ProposalRejectedPreq(NavCoinTestFramework):
+class CFund005ProposalRejectedPreq(BsmCoinTestFramework):
   """It should create a proposal and let it expire"""
 
   def __init__(self):

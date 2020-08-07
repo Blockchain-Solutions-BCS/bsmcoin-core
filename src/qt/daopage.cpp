@@ -1,4 +1,4 @@
-// Copyright (c) 2019 The NavCoin Core developers
+// Copyright (c) 2019 The BsmCoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -40,11 +40,11 @@ DaoPage::DaoPage(const PlatformStyle *platformStyle, QWidget *parent) :
     bottomBox->setLayout(bottomBoxLayout);
 
     viewLbl = new QLabel(tr("View:"));
-    proposalsBtn = new NavCoinPushButton(tr("Fund Proposals"));
-    paymentRequestsBtn = new NavCoinPushButton(tr("Payment Requests"));
-    consultationsBtn = new NavCoinPushButton(tr("Consultations"));
-    deploymentsBtn = new NavCoinPushButton(tr("Deployments"));
-    consensusBtn = new NavCoinPushButton(tr("Consensus Parameters"));
+    proposalsBtn = new BsmCoinPushButton(tr("Fund Proposals"));
+    paymentRequestsBtn = new BsmCoinPushButton(tr("Payment Requests"));
+    consultationsBtn = new BsmCoinPushButton(tr("Consultations"));
+    deploymentsBtn = new BsmCoinPushButton(tr("Deployments"));
+    consensusBtn = new BsmCoinPushButton(tr("Consensus Parameters"));
     filterLbl = new QLabel(tr("Filter:"));
     filterCmb = new QComboBox();
     filter2Cmb = new QComboBox();
@@ -530,8 +530,8 @@ void DaoPage::initialize(CProposalMap proposalMap, CPaymentRequestMap paymentReq
             it.first,
             "#6666ff",
             QString::fromStdString(proposal.strDZeel).left(150) + (proposal.strDZeel.size() > 150 ? "..." : ""),
-            NavCoinUnits::formatWithUnit(unit, proposal.nAmount, false, NavCoinUnits::separatorAlways),
-            NavCoinUnits::formatWithUnit(unit, proposal.nAmount - proposal.GetAvailable(coins), false, NavCoinUnits::separatorAlways),
+            BsmCoinUnits::formatWithUnit(unit, proposal.nAmount, false, BsmCoinUnits::separatorAlways),
+            BsmCoinUnits::formatWithUnit(unit, proposal.nAmount - proposal.GetAvailable(coins), false, BsmCoinUnits::separatorAlways),
             QString::fromStdString(s_deadline),
             proposal.nVotesYes ? proposal.nVotesYes : 0,
             proposal.nVotesNo ? proposal.nVotesNo : 0,
@@ -637,7 +637,7 @@ void DaoPage::initialize(CProposalMap proposalMap, CPaymentRequestMap paymentReq
             QString::fromStdString(prequest.strDZeel).left(150) + (prequest.strDZeel.size() > 150 ? "..." : ""),
             QString::fromStdString(proposal.strDZeel).left(150) + (proposal.strDZeel.size() > 150 ? "..." : ""),
             "#6666ff",
-            NavCoinUnits::formatWithUnit(unit, prequest.nAmount, false, NavCoinUnits::separatorAlways),
+            BsmCoinUnits::formatWithUnit(unit, prequest.nAmount, false, BsmCoinUnits::separatorAlways),
             prequest.nVotesYes ? prequest.nVotesYes : 0,
             prequest.nVotesNo ? prequest.nVotesNo : 0,
             prequest.nVotesAbs ? prequest.nVotesAbs : 0,
@@ -1723,7 +1723,7 @@ void DaoPage::onDetails() {
             type = "payment-request";
         else if (nCurrentView == VIEW_CONSULTATIONS)
             type = "consultation";
-        QString link = "https://www.navexplorer.com/dao/" + type + "/" + contextHash;
+        QString link = "https://www.bsmexplorer.com/dao/" + type + "/" + contextHash;
         QDesktopServices::openUrl(QUrl(link));
     }
 }

@@ -11,8 +11,8 @@
  * - E-mail usually won't line-break if there's no punctuation to break at.
  * - Double-clicking selects the whole string as one word if it's all alphanumeric.
  */
-#ifndef NAVCOIN_BASE58_H
-#define NAVCOIN_BASE58_H
+#ifndef BSMCOIN_BASE58_H
+#define BSMCOIN_BASE58_H
 
 #include <chainparams.h>
 #include <key.h>
@@ -97,7 +97,7 @@ public:
     bool operator> (const CBase58Data& b58) const { return CompareTo(b58) >  0; }
 };
 
-/** base58-encoded NavCoin addresses.
+/** base58-encoded BsmCoin addresses.
  * Public-key-hash-addresses have version 111 (or 20 testnet).
  * The data vector contains RIPEMD160(SHA256(pubkey)), where pubkey is the serialized public key.
  * Script-hash-addresses have version 28 (or 96 testnet).
@@ -105,7 +105,7 @@ public:
  * Cold-staking-addresses have version 196 (or 63 testnet).
  * The data vector contains RIPEMD160(SHA256(stakingkey)) || RIPEMD160(SHA256(spendingkey)), where stakingkey and spendingkey are the serialized public keys.
  */
-class CNavCoinAddress : public CBase58Data {
+class CBsmCoinAddress : public CBase58Data {
 public:
     bool Set(const CKeyID &id);
     bool Set(const CKeyID &id, const CKeyID &id2);
@@ -119,13 +119,13 @@ public:
     bool IsColdStakingv2Address(const CChainParams& params) const;
     bool IsRawScript() const;
 
-    CNavCoinAddress() {}
-    CNavCoinAddress(const CTxDestination &dest) { Set(dest); }
-    CNavCoinAddress(const std::string& strAddress) { SetString(strAddress); }
-    CNavCoinAddress(const char* pszAddress) { SetString(pszAddress); }
-    CNavCoinAddress(const CKeyID &id, const CKeyID &id2) { Set(id, id2); }
-    CNavCoinAddress(const CKeyID &id, const CKeyID &id2, const CKeyID &id3) { Set(id, id2, id3); }
-    CNavCoinAddress(const CScript &scriptIn) { Set(scriptIn); }
+    CBsmCoinAddress() {}
+    CBsmCoinAddress(const CTxDestination &dest) { Set(dest); }
+    CBsmCoinAddress(const std::string& strAddress) { SetString(strAddress); }
+    CBsmCoinAddress(const char* pszAddress) { SetString(pszAddress); }
+    CBsmCoinAddress(const CKeyID &id, const CKeyID &id2) { Set(id, id2); }
+    CBsmCoinAddress(const CKeyID &id, const CKeyID &id2, const CKeyID &id3) { Set(id, id2, id3); }
+    CBsmCoinAddress(const CScript &scriptIn) { Set(scriptIn); }
 
     CTxDestination Get() const;
     bool GetKeyID(CKeyID &keyID) const;
@@ -135,16 +135,16 @@ public:
     bool GetIndexKey(uint160& hashBytes, int& type) const;
     bool IsScript() const;
 
-    bool GetStakingAddress(CNavCoinAddress &address) const;
-    bool GetSpendingAddress(CNavCoinAddress &address) const;
-    bool GetVotingAddress(CNavCoinAddress &address) const;
+    bool GetStakingAddress(CBsmCoinAddress &address) const;
+    bool GetSpendingAddress(CBsmCoinAddress &address) const;
+    bool GetVotingAddress(CBsmCoinAddress &address) const;
 
 };
 
 /**
  * A base58-encoded secret key
  */
-class CNavCoinSecret : public CBase58Data
+class CBsmCoinSecret : public CBase58Data
 {
 public:
     void SetKey(const CKey& vchSecret);
@@ -153,11 +153,11 @@ public:
     bool SetString(const char* pszSecret);
     bool SetString(const std::string& strSecret);
 
-    CNavCoinSecret(const CKey& vchSecret) { SetKey(vchSecret); }
-    CNavCoinSecret() {}
+    CBsmCoinSecret(const CKey& vchSecret) { SetKey(vchSecret); }
+    CBsmCoinSecret() {}
 };
 
-template<typename K, int Size, CChainParams::Base58Type Type> class CNavCoinExtKeyBase : public CBase58Data
+template<typename K, int Size, CChainParams::Base58Type Type> class CBsmCoinExtKeyBase : public CBase58Data
 {
 public:
     void SetKey(const K &key) {
@@ -175,18 +175,18 @@ public:
         return ret;
     }
 
-    CNavCoinExtKeyBase(const K &key) {
+    CBsmCoinExtKeyBase(const K &key) {
         SetKey(key);
     }
 
-    CNavCoinExtKeyBase(const std::string& strBase58c) {
+    CBsmCoinExtKeyBase(const std::string& strBase58c) {
         SetString(strBase58c.c_str(), Params().Base58Prefix(Type).size());
     }
 
-    CNavCoinExtKeyBase() {}
+    CBsmCoinExtKeyBase() {}
 };
 
-typedef CNavCoinExtKeyBase<CExtKey, BIP32_EXTKEY_SIZE, CChainParams::EXT_SECRET_KEY> CNavCoinExtKey;
-typedef CNavCoinExtKeyBase<CExtPubKey, BIP32_EXTKEY_SIZE, CChainParams::EXT_PUBLIC_KEY> CNavCoinExtPubKey;
+typedef CBsmCoinExtKeyBase<CExtKey, BIP32_EXTKEY_SIZE, CChainParams::EXT_SECRET_KEY> CBsmCoinExtKey;
+typedef CBsmCoinExtKeyBase<CExtPubKey, BIP32_EXTKEY_SIZE, CChainParams::EXT_PUBLIC_KEY> CBsmCoinExtPubKey;
 
-#endif // NAVCOIN_BASE58_H
+#endif // BSMCOIN_BASE58_H

@@ -6,7 +6,7 @@
 #include <key.h>
 #include <mnemonic/mnemonic.h>
 
-namespace navcoin {
+namespace bsmcoin {
 
 uint512 GenerateNewMnemonicSeed(std::string& mnemonic, const std::string& strLanguage)
 {

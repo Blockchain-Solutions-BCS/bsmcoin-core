@@ -1,15 +1,15 @@
 Release Process
 ====================
 
-Before any code can be accepted into NavCoin Core a Release Candidate branch and PR must be presented to the community for a minimum stand-down period - as detailed below.
+Before any code can be accepted into BsmCoin Core a Release Candidate branch and PR must be presented to the community for a minimum stand-down period - as detailed below.
 
 ### Release Candidates
 
-Release candidates are critical to the NavCoin release eco-system and give the community and interested parties time to review the code and potentially prepare for any changes that may be introduced.  
+Release candidates are critical to the BsmCoin release eco-system and give the community and interested parties time to review the code and potentially prepare for any changes that may be introduced.  
 
 #### Release Candidates and Release Version Convention
 
-NavCoin follows the Semantic Versioning.
+BsmCoin follows the Semantic Versioning.
 
 e.g `v(MAJOR).(MINOR).(PATCH)` = `v4.2.1`
 
@@ -43,7 +43,7 @@ During the release candidate review period, no new pull requests should be merge
 
 Before every release candidate:
 
-* Update translations see [translation_process.md](https://github.com/navcoin/navcoin-core/blob/master/doc/translation_process.md#synchronising-translations).
+* Update translations see [translation_process.md](https://github.com/bsmcoin/bsmcoin-core/blob/master/doc/translation_process.md#synchronising-translations).
 
 Before every minor and major release:
 
@@ -60,9 +60,9 @@ Before every major release:
 Check out the source code in the following directory hierarchy.
 
     cd /path/to/your/toplevel/build
-    git clone https://github.com/navcoin/navcoin-core.git
+    git clone https://github.com/bsmcoin/bsmcoin-core.git
 
-### NavCoin maintainers/release engineers, update version in sources
+### BsmCoin maintainers/release engineers, update version in sources
 
 Update the following:
 
@@ -96,7 +96,7 @@ Tag version (or release candidate) in git
 
 Setup Gitian descriptors:
 
-    pushd ./navcoin-core
+    pushd ./bsmcoin-core
     export VERSION=(new version, e.g. v4.1.0, which should also be the name of the repository branch)
     git fetch
     git checkout v${VERSION}
@@ -123,7 +123,7 @@ Create the OS X SDK tarball, see the [OS X readme](README_osx.md) for details, a
 By default, Gitian will fetch source files as needed. To cache them ahead of time:
 
     pushd ./gitian-builder
-    make -C ../navcoin-core/depends download SOURCES_PATH=`pwd`/cache/common
+    make -C ../bsmcoin-core/depends download SOURCES_PATH=`pwd`/cache/common
     popd
 
 Only missing files will be fetched, so this is safe to re-run for each build.
@@ -131,57 +131,57 @@ Only missing files will be fetched, so this is safe to re-run for each build.
 NOTE: Offline builds must use the --url flag to ensure Gitian fetches only from local URLs. For example:
 
     pushd ./gitian-builder
-    ./bin/gbuild --url navcoin-core=/path/to/navcoin,signature=/path/to/sigs {rest of arguments}
+    ./bin/gbuild --url bsmcoin-core=/path/to/bsmcoin,signature=/path/to/sigs {rest of arguments}
     popd
 
 The gbuild invocations below <b>DO NOT DO THIS</b> by default.
 
-### Build and sign NavCoin Core for Linux, Windows, and OS X:
+### Build and sign BsmCoin Core for Linux, Windows, and OS X:
 
     pushd ./gitian-builder
-    ./bin/gbuild --memory 3000 --commit navcoin-core=${VERSION} ../navcoin-core/contrib/gitian-descriptors/gitian-arm.yml
-    mv build/out/navcoin-*.tar.gz build/out/src/navcoin-*.tar.gz ../
+    ./bin/gbuild --memory 3000 --commit bsmcoin-core=${VERSION} ../bsmcoin-core/contrib/gitian-descriptors/gitian-arm.yml
+    mv build/out/bsmcoin-*.tar.gz build/out/src/bsmcoin-*.tar.gz ../
     
-    ./bin/gbuild --memory 3000 --commit navcoin-core=${VERSION} ../navcoin-core/contrib/gitian-descriptors/gitian-linux.yml
-    mv build/out/navcoin-*.tar.gz build/out/src/navcoin-*.tar.gz ../
+    ./bin/gbuild --memory 3000 --commit bsmcoin-core=${VERSION} ../bsmcoin-core/contrib/gitian-descriptors/gitian-linux.yml
+    mv build/out/bsmcoin-*.tar.gz build/out/src/bsmcoin-*.tar.gz ../
 
-    ./bin/gbuild --memory 3000 --commit navcoin-core=${VERSION} ../navcoin-core/contrib/gitian-descriptors/gitian-win.yml
-    mv build/out/navcoin-*-win-unsigned.tar.gz inputs/navcoin-win-unsigned.tar.gz
-    mv build/out/navcoin-*.zip build/out/navcoin-*.exe ../
+    ./bin/gbuild --memory 3000 --commit bsmcoin-core=${VERSION} ../bsmcoin-core/contrib/gitian-descriptors/gitian-win.yml
+    mv build/out/bsmcoin-*-win-unsigned.tar.gz inputs/bsmcoin-win-unsigned.tar.gz
+    mv build/out/bsmcoin-*.zip build/out/bsmcoin-*.exe ../
 
-    ./bin/gbuild --memory 3000 --commit navcoin-core=${VERSION} ../navcoin-core/contrib/gitian-descriptors/gitian-osx.yml
-    mv build/out/navcoin-*-osx-unsigned.tar.gz inputs/navcoin-osx-unsigned.tar.gz
-    mv build/out/navcoin-*.tar.gz build/out/navcoin-*.dmg ../
+    ./bin/gbuild --memory 3000 --commit bsmcoin-core=${VERSION} ../bsmcoin-core/contrib/gitian-descriptors/gitian-osx.yml
+    mv build/out/bsmcoin-*-osx-unsigned.tar.gz inputs/bsmcoin-osx-unsigned.tar.gz
+    mv build/out/bsmcoin-*.tar.gz build/out/bsmcoin-*.dmg ../
     popd
 
 Build output expected:
 
-  1. source tarball (`navcoin-${VERSION}.tar.gz`)
-  2. linux 32-bit and 64-bit dist tarballs (`navcoin-${VERSION}-linux[32|64].tar.gz`)
-  3. windows 32-bit and 64-bit unsigned installers and dist zips (`navcoin-${VERSION}-win[32|64]-setup-unsigned.exe`, `navcoin-${VERSION}-win[32|64].zip`)
-  4. OS X unsigned installer and dist tarball (`navcoin-${VERSION}-osx-unsigned.dmg`, `navcoin-${VERSION}-osx64.tar.gz`)
+  1. source tarball (`bsmcoin-${VERSION}.tar.gz`)
+  2. linux 32-bit and 64-bit dist tarballs (`bsmcoin-${VERSION}-linux[32|64].tar.gz`)
+  3. windows 32-bit and 64-bit unsigned installers and dist zips (`bsmcoin-${VERSION}-win[32|64]-setup-unsigned.exe`, `bsmcoin-${VERSION}-win[32|64].zip`)
+  4. OS X unsigned installer and dist tarball (`bsmcoin-${VERSION}-osx-unsigned.dmg`, `bsmcoin-${VERSION}-osx64.tar.gz`)
   5. Gitian signatures (in `gitian.sigs/${VERSION}-<linux|{win,osx}-unsigned>/(your Gitian key)/`)
 
 
 The list of files should be:
 ```
-navcoin-${VERSION}-aarch64-linux-gnu.tar.gz
-navcoin-${VERSION}-arm-linux-gnueabihf.tar.gz
-navcoin-${VERSION}-i686-pc-linux-gnu.tar.gz
-navcoin-${VERSION}-x86_64-linux-gnu.tar.gz
-navcoin-${VERSION}-osx64.tar.gz
-navcoin-${VERSION}-osx.dmg
-navcoin-${VERSION}.tar.gz
-navcoin-${VERSION}-win32-setup.exe
-navcoin-${VERSION}-win32.zip
-navcoin-${VERSION}-win64-setup.exe
-navcoin-${VERSION}-win64.zip
+bsmcoin-${VERSION}-aarch64-linux-gnu.tar.gz
+bsmcoin-${VERSION}-arm-linux-gnueabihf.tar.gz
+bsmcoin-${VERSION}-i686-pc-linux-gnu.tar.gz
+bsmcoin-${VERSION}-x86_64-linux-gnu.tar.gz
+bsmcoin-${VERSION}-osx64.tar.gz
+bsmcoin-${VERSION}-osx.dmg
+bsmcoin-${VERSION}.tar.gz
+bsmcoin-${VERSION}-win32-setup.exe
+bsmcoin-${VERSION}-win32.zip
+bsmcoin-${VERSION}-win64-setup.exe
+bsmcoin-${VERSION}-win64.zip
 ```
 The `*-debug*` files generated by the gitian build contain debug symbols
 for troubleshooting by developers. It is assumed that anyone that is interested
 in debugging can run gitian to generate the files for themselves. To avoid
 end-user confusion about which file to pick, as well as save storage
-space *do not upload these to the navcoin.org server, nor put them in the torrent*.
+space *do not upload these to the bsmcoin.org server, nor put them in the torrent*.
 
 - GPG-sign it, delete the unsigned file:
 ```
@@ -191,17 +191,17 @@ rm SHA256SUMS
 (the digest algorithm is forced to sha256 to avoid confusion of the `Hash:` header that GPG adds with the SHA256 used for the files)
 Note: check that SHA256SUMS itself doesn't end up in SHA256SUMS, which is a spurious/nonsensical entry.
 
-- Upload zips and installers, as well as `SHA256SUMS.asc` from last step, to the navcoin.org server
-  into `/var/www/bin/navcoin-core-${VERSION}`
+- Upload zips and installers, as well as `SHA256SUMS.asc` from last step, to the bsmcoin.org server
+  into `/var/www/bin/bsmcoin-core-${VERSION}`
 
 - A `.torrent` will appear in the directory after a few minutes. Optionally help seed this torrent. To get the `magnet:` URI use:
 ```bash
 transmission-show -m <torrent file>
 ```
 Insert the magnet URI into the announcement sent to mailing lists. This permits
-people without access to `navcoin.org` to download the binary distribution.
+people without access to `bsmcoin.org` to download the binary distribution.
 Also put it into the `optional_magnetlink:` slot in the YAML file for
-navcoin.org (see below for navcoin.org update instructions).
+bsmcoin.org (see below for bsmcoin.org update instructions).
 
 ### Prepare the Release Tag
 
@@ -209,40 +209,40 @@ Once the release candidate is approved and promoted to a final release, a new re
 
 ### Update Services
 
-Before publicly announcing the release the Bootstrap & NavPay servers should be updated to the new version.
+Before publicly announcing the release the Bootstrap & BsmPay servers should be updated to the new version.
 
-### Update The NavCoin Website
+### Update The BsmCoin Website
 
 Update the version number and download links on all translations of the Wallets page;
 
-https://github.com/navcoin/navcoin-org/tree/master/content/wallets
+https://github.com/bsmcoin/bsmcoin-org/tree/master/content/wallets
 
 Also create the notice for the release; 
 
-https://github.com/navcoin/navcoin-org/tree/master/content/notices
+https://github.com/bsmcoin/bsmcoin-org/tree/master/content/notices
 
 The notice can be written manually by duplicating and modifying an existing notice, or through the admin section of the website. The admin section relies on your GitHub login having push access to the repo, so you will need to ensure you have the correct repository rights if you want to create it that way.
 
-The hero image for the release notice is usually generated with the navoin canva template to ensure it fits the social sharing spec and aligns wtih the brand guidelies.
+The hero image for the release notice is usually generated with the bsmoin canva template to ensure it fits the social sharing spec and aligns wtih the brand guidelies.
 
 ### Publicly Announce the release
 
-To ensure resonable due diligence is done to inform the communtiy of new software releases the final release should be announced on all possible NavCoin platforms;
+To ensure resonable due diligence is done to inform the communtiy of new software releases the final release should be announced on all possible BsmCoin platforms;
 
-[Reddit](https://reddit.com/r/navcoin), [Twitter](https://twitter.com/navcoin), [Facebook](https://facebook.com/navcoin), [Telegram](https://t.me/navcoin), [Discord](https://discord.gg/y4Vu9jw), [BitcoinTalk](https://bitcointalk.org/index.php?topic=679791.new#new), [Medium](https://medium.com/nav-coin/), Blockfolio Signal & MailChimp.
+[Reddit](https://reddit.com/r/bsmcoin), [Twitter](https://twitter.com/bsmcoin), [Facebook](https://facebook.com/bsmcoin), [Telegram](https://t.me/bsmcoin), [Discord](https://discord.gg/y4Vu9jw), [BitcoinTalk](https://bitcointalk.org/index.php?topic=679791.new#new), [Medium](https://medium.com/bsm-coin/), Blockfolio Signal & MailChimp.
 
 
 ### Notify Exchanges, Commercial Nodes
 
 All exchanges should be notified of the update;
 
-https://navcoin.org/en/buy-navcoin
+https://bsmcoin.org/en/buy-bsmcoin
 
-Most of the exchanges have their contact emails are consolidated into a mailing list inside the admin@navcoin email account which can be set to the BCC to ensure they receive the update. For ones which are not part of the mailing list their is usually a support form on their site which needs to be filled out.
+Most of the exchanges have their contact emails are consolidated into a mailing list inside the admin@bsmcoin email account which can be set to the BCC to ensure they receive the update. For ones which are not part of the mailing list their is usually a support form on their site which needs to be filled out.
 
 Additional to exhcanges, the following wallets & services should be notified;
 
-NavExplorer, NavPool, CryptoId, Coinomi, Magnum Wallet, AtomicDex & CoinPayments.
+BsmExplorer, BsmPool, CryptoId, Coinomi, Magnum Wallet, AtomicDex & CoinPayments.
 
 ### Celebrate with the Community
 

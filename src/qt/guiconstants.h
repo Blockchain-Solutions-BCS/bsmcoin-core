@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef NAVCOIN_QT_GUICONSTANTS_H
-#define NAVCOIN_QT_GUICONSTANTS_H
+#ifndef BSMCOIN_QT_GUICONSTANTS_H
+#define BSMCOIN_QT_GUICONSTANTS_H
 
 #include <QString>
 
@@ -22,7 +22,7 @@ static const int ERROR_LOG_INITIAL_COUNT = 500;
 /* AskPassphraseDialog -- Maximum passphrase length */
 static const int MAX_PASSPHRASE_SIZE = 1024;
 
-/* NavCoinGUI -- Size of icons in status bar */
+/* BsmCoinGUI -- Size of icons in status bar */
 static const int STATUSBAR_ICONSIZE = 18;
 
 static const bool DEFAULT_SPLASHSCREEN = true;
@@ -79,9 +79,9 @@ static const int MAX_URI_LENGTH = 255;
 /* Number of frames in spinner animation */
 #define SPINNER_FRAMES 36
 
-#define QAPP_ORG_NAME "NavCoin"
-#define QAPP_ORG_DOMAIN "navcoin.org"
-#define QAPP_APP_NAME_DEFAULT "NavCoin-Qt"
-#define QAPP_APP_NAME_TESTNET "NavCoin-Qt-testnet"
+#define QAPP_ORG_NAME "BsmCoin"
+#define QAPP_ORG_DOMAIN "bsmcoin.org"
+#define QAPP_APP_NAME_DEFAULT "BsmCoin-Qt"
+#define QAPP_APP_NAME_TESTNET "BsmCoin-Qt-testnet"
 
-#endif // NAVCOIN_QT_GUICONSTANTS_H
+#endif // BSMCOIN_QT_GUICONSTANTS_H

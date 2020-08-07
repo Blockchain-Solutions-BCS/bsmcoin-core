@@ -1,0 +1,3 @@
+debian/manpages/bsmcoind.1
+debian/manpages/bsmcoin.conf.5
+debian/manpages/bsmcoin-cli.1

@@ -5,11 +5,11 @@
 /**
  * Utility functions shared by unit tests
  */
-#ifndef NAVCOIN_TEST_TESTUTIL_H
-#define NAVCOIN_TEST_TESTUTIL_H
+#ifndef BSMCOIN_TEST_TESTUTIL_H
+#define BSMCOIN_TEST_TESTUTIL_H
 
 #include <boost/filesystem/path.hpp>
 
 boost::filesystem::path GetTempPath();
 
-#endif // NAVCOIN_TEST_TESTUTIL_H
+#endif // BSMCOIN_TEST_TESTUTIL_H

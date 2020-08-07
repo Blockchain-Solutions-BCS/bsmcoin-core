@@ -1,0 +1,6 @@
+usr/local/bin/bsmcoin-qt usr/bin
+share/pixmaps/bsmcoin32.xpm usr/share/pixmaps
+share/pixmaps/bsmcoin16.xpm usr/share/pixmaps
+share/pixmaps/bsmcoin128.png usr/share/pixmaps
+debian/bsmcoin-qt.desktop usr/share/applications
+debian/bsmcoin-qt.protocol usr/share/kde4/services/

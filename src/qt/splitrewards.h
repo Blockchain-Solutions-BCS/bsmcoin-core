@@ -1,4 +1,4 @@
-// Copyright (c) 2019 The NavCoin Core developers
+// Copyright (c) 2019 The BsmCoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -60,6 +60,6 @@ private Q_SLOTS:
     void onQuit();
 };
 
-CAmount PercentageToNav(int percentage);
+CAmount PercentageToBsm(int percentage);
 
 #endif // SPLITREWARDS_H

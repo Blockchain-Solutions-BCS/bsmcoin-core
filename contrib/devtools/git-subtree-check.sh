@@ -48,7 +48,7 @@ set $latest_squash
 old=$1
 rev=$2
 if [ "d$(git cat-file -t $rev 2>/dev/null)" != dcommit ]; then
-    echo "ERROR: subtree commit $rev unavailable. Fetch/update the subtree repository" >&2
+    echo "ERROR: subtree commit $rev ubsmailable. Fetch/update the subtree repository" >&2
     exit 2
 fi
 tree_subtree=$(git show -s --format="%T" $rev)

@@ -1,4 +1,4 @@
-// Copyright (c) 2019 The NavCoin Core developers
+// Copyright (c) 2019 The BsmCoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -7,7 +7,7 @@
 
 #include "consensus/dao.h"
 #include "main.h"
-#include "navcoinlistwidget.h"
+#include "bsmcoinlistwidget.h"
 #include "walletmodel.h"
 
 #include <QCheckBox>
@@ -41,7 +41,7 @@ private:
     QLabel* minLbl;
     QLabel* maxLbl;
     QLabel *warningLbl;
-    NavCoinListWidget* listWidget;
+    BsmCoinListWidget* listWidget;
     QCheckBox* moreAnswersBox;
 
     int cpos;

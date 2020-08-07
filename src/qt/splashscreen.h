@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef NAVCOIN_QT_SPLASHSCREEN_H
-#define NAVCOIN_QT_SPLASHSCREEN_H
+#ifndef BSMCOIN_QT_SPLASHSCREEN_H
+#define BSMCOIN_QT_SPLASHSCREEN_H
 
 #include <QLabel>
 #include <QHBoxLayout>
@@ -12,7 +12,7 @@ class NetworkStyle;
 
 /** Class for the splashscreen with information of the running client.
  *
- * @note this is intentionally not a QSplashScreen. NavCoin Core initialization
+ * @note this is intentionally not a QSplashScreen. BsmCoin Core initialization
  * can take a long time, and in that case a progress window that cannot be
  * moved around and minimized has turned out to be frustrating to the user.
  */
@@ -54,4 +54,4 @@ private:
     QTimer* timerProgress;
 };
 
-#endif // NAVCOIN_QT_SPLASHSCREEN_H
+#endif // BSMCOIN_QT_SPLASHSCREEN_H

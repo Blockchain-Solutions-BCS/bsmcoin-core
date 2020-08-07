@@ -1,0 +1,33 @@
+# /etc/conf.d/bsmcoind: config file for /etc/init.d/bsmcoind
+
+# Config file location
+#BSMCOIND_CONFIGFILE="/etc/bsmcoin/bsmcoin.conf"
+
+# What directory to write pidfile to?  (created and owned by $BSMCOIND_USER)
+#BSMCOIND_PIDDIR="/var/run/bsmcoind"
+
+# What filename to give the pidfile
+#BSMCOIND_PIDFILE="${BSMCOIND_PIDDIR}/bsmcoind.pid"
+
+# Where to write bsmcoind data (be mindful that the blockchain is large)
+#BSMCOIND_DATADIR="/var/lib/bsmcoind"
+
+# User and group to own bsmcoind process
+#BSMCOIND_USER="bsmcoin"
+#BSMCOIND_GROUP="bsmcoin"
+
+# Path to bsmcoind executable
+#BSMCOIND_BIN="/usr/bin/bsmcoind"
+
+# Nice value to run bsmcoind under
+#BSMCOIND_NICE=0
+
+# Additional options (avoid -conf and -datadir, use flags above)
+BSMCOIND_OPTS="-disablewallet"
+
+# The timeout in seconds OpenRC will wait for bsmcoind to terminate
+# after a SIGTERM has been raised.
+# Note that this will be mapped as argument to start-stop-daemon's
+# '--retry' option, which means you can specify a retry schedule
+# here. For more information see man 8 start-stop-daemon.
+BSMCOIND_SIGTERM_TIMEOUT=60

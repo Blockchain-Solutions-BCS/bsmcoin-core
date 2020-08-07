@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef NAVCOIN_QT_OVERVIEWPAGE_H
-#define NAVCOIN_QT_OVERVIEWPAGE_H
+#ifndef BSMCOIN_QT_OVERVIEWPAGE_H
+#define BSMCOIN_QT_OVERVIEWPAGE_H
 
 #include <amount.h>
 #include <splitrewards.h>
@@ -79,4 +79,4 @@ private Q_SLOTS:
     void updateWatchOnlyLabels(bool showWatchOnly);
 };
 
-#endif // NAVCOIN_QT_OVERVIEWPAGE_H
+#endif // BSMCOIN_QT_OVERVIEWPAGE_H

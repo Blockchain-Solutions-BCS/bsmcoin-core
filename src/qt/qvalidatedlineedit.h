@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef NAVCOIN_QT_QVALIDATEDLINEEDIT_H
-#define NAVCOIN_QT_QVALIDATEDLINEEDIT_H
+#ifndef BSMCOIN_QT_QVALIDATEDLINEEDIT_H
+#define BSMCOIN_QT_QVALIDATEDLINEEDIT_H
 
 #include <QLineEdit>
 
@@ -40,4 +40,4 @@ private Q_SLOTS:
     void checkValidity();
 };
 
-#endif // NAVCOIN_QT_QVALIDATEDLINEEDIT_H
+#endif // BSMCOIN_QT_QVALIDATEDLINEEDIT_H

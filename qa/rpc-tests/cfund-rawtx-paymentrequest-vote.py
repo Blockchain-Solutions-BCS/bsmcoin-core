@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
-# Copyright (c) 2018 The Navcoin Core developers
+# Copyright (c) 2018 The Bsmcoin Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-from test_framework.test_framework import NavCoinTestFramework
+from test_framework.test_framework import BsmCoinTestFramework
 from test_framework.cfund_util import *
 
 
-class CommunityFundVotePaymentrequestRawTX(NavCoinTestFramework):
+class CommunityFundVotePaymentrequestRawTX(BsmCoinTestFramework):
     """Tests the state transition of payment requests of the Community fund."""
 
     def __init__(self):

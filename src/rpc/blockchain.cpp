@@ -170,9 +170,9 @@ UniValue blockToDeltasJSON(const CBlock& block, const CBlockIndex* blockindex)
 
                 if (GetSpentIndex(spentKey, spentInfo)) {
                     if (spentInfo.addressType == 1) {
-                        delta.pushKV("address", CNavCoinAddress(CKeyID(spentInfo.addressHash)).ToString());
+                        delta.pushKV("address", CBsmCoinAddress(CKeyID(spentInfo.addressHash)).ToString());
                     } else if (spentInfo.addressType == 2)  {
-                        delta.pushKV("address", CNavCoinAddress(CScriptID(spentInfo.addressHash)).ToString());
+                        delta.pushKV("address", CBsmCoinAddress(CScriptID(spentInfo.addressHash)).ToString());
                     } else {
                         continue;
                     }
@@ -200,11 +200,11 @@ UniValue blockToDeltasJSON(const CBlock& block, const CBlockIndex* blockindex)
 
             if (out.scriptPubKey.IsPayToScriptHash()) {
                 vector<unsigned char> hashBytes(out.scriptPubKey.begin()+2, out.scriptPubKey.begin()+22);
-                delta.pushKV("address", CNavCoinAddress(CScriptID(uint160(hashBytes))).ToString());
+                delta.pushKV("address", CBsmCoinAddress(CScriptID(uint160(hashBytes))).ToString());
 
             } else if (out.scriptPubKey.IsPayToPublicKeyHash()) {
                 vector<unsigned char> hashBytes(out.scriptPubKey.begin()+3, out.scriptPubKey.begin()+23);
-                delta.pushKV("address", CNavCoinAddress(CKeyID(uint160(hashBytes))).ToString());
+                delta.pushKV("address", CBsmCoinAddress(CKeyID(uint160(hashBytes))).ToString());
             } else {
                 continue;
             }
@@ -1313,8 +1313,8 @@ UniValue gettxout(const UniValue& params, bool fHelp)
                                                                                                        "     \"hex\" : \"hex\",        (string) \n"
                                                                                                        "     \"reqSigs\" : n,          (numeric) Number of required signatures\n"
                                                                                                        "     \"type\" : \"pubkeyhash\", (string) The type, eg pubkeyhash\n"
-                                                                                                       "     \"addresses\" : [          (array of string) array of navcoin addresses\n"
-                                                                                                       "        \"navcoinaddress\"     (string) navcoin address\n"
+                                                                                                       "     \"addresses\" : [          (array of string) array of bsmcoin addresses\n"
+                                                                                                       "        \"bsmcoinaddress\"     (string) bsmcoin address\n"
                                                                                                        "        ,...\n"
                                                                                                        "     ]\n"
                                                                                                        "  },\n"

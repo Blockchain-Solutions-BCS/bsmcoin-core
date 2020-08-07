@@ -34,7 +34,7 @@ results are cached into a tarball that can be re-used and distributed.
 
 Each package is configured and patched so that it will yield the same
 build-results with each consequent build, within a reasonable set of
-constraints. Some things like timestamp insertion are unavoidable, and are
+constraints. Some things like timestamp insertion are ubsmoidable, and are
 beyond the scope of this system. Additionally, the toolchain itself must be
 capable of deterministic results. When revisions are properly bumped, a cached
 build should represent an exact single payload.

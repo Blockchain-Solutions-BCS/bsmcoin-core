@@ -1,4 +1,4 @@
-// Copyright (c) 2019 The NavCoin Core developers
+// Copyright (c) 2019 The BsmCoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -18,8 +18,8 @@
 #include "daosupport.h"
 #include "daoversionbit.h"
 #include "main.h"
-#include "navcoinpushbutton.h"
-#include "navcoinunits.h"
+#include "bsmcoinpushbutton.h"
+#include "bsmcoinunits.h"
 #include "optionsmodel.h"
 #include "txdb.h"
 #include "wallet/wallet.h"
@@ -198,11 +198,11 @@ private:
     QVector<ConsensusEntry> consensusModel;
 
     QLabel* viewLbl;
-    NavCoinPushButton* proposalsBtn;
-    NavCoinPushButton* paymentRequestsBtn;
-    NavCoinPushButton* consultationsBtn;
-    NavCoinPushButton* deploymentsBtn;
-    NavCoinPushButton* consensusBtn;
+    BsmCoinPushButton* proposalsBtn;
+    BsmCoinPushButton* paymentRequestsBtn;
+    BsmCoinPushButton* consultationsBtn;
+    BsmCoinPushButton* deploymentsBtn;
+    BsmCoinPushButton* consensusBtn;
     QLabel* filterLbl;
     QLabel* childFilterLbl;
     QComboBox* filterCmb;

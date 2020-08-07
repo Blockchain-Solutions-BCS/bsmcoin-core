@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef NAVCOIN_QT_OPTIONSDIALOG_H
-#define NAVCOIN_QT_OPTIONSDIALOG_H
+#ifndef BSMCOIN_QT_OPTIONSDIALOG_H
+#define BSMCOIN_QT_OPTIONSDIALOG_H
 
 #include <QDialog>
 #include <QValidator>
@@ -50,7 +50,7 @@ private Q_SLOTS:
     void on_resetButton_clicked();
     void on_okButton_clicked();
     void on_cancelButton_clicked();
-    void on_openNavCoinConfButton_clicked();
+    void on_openBsmCoinConfButton_clicked();
 
     void on_hideTrayIcon_stateChanged(int fState);
 
@@ -73,4 +73,4 @@ private:
     QDataWidgetMapper *mapper;
 };
 
-#endif // NAVCOIN_QT_OPTIONSDIALOG_H
+#endif // BSMCOIN_QT_OPTIONSDIALOG_H

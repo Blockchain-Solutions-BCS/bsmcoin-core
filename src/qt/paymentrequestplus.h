@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef NAVCOIN_QT_PAYMENTREQUESTPLUS_H
-#define NAVCOIN_QT_PAYMENTREQUESTPLUS_H
+#ifndef BSMCOIN_QT_PAYMENTREQUESTPLUS_H
+#define BSMCOIN_QT_PAYMENTREQUESTPLUS_H
 
 #include <qt/paymentrequest.pb.h>
 
@@ -45,4 +45,4 @@ private:
     payments::PaymentDetails details;
 };
 
-#endif // NAVCOIN_QT_PAYMENTREQUESTPLUS_H
+#endif // BSMCOIN_QT_PAYMENTREQUESTPLUS_H

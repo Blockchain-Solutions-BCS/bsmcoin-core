@@ -59,12 +59,12 @@ RUN ../dist/configure --enable-cxx \
     --prefix=$BDB_DIR
 RUN make install
 #--------------------------------------------------------------------------------
-# NavBS Build + Install
+# BsmBS Build + Install
 #--------------------------------------------------------------------------------
 WORKDIR /tmp
-RUN git clone https://github.com/Blockchain-Solutions-BCS/navcoin-core.git
+RUN git clone https://github.com/Blockchain-Solutions-BCS/bsmcoin-core.git
 
-WORKDIR /tmp/navcoin-core/
+WORKDIR /tmp/bsmcoin-core/
 RUN ./autogen.sh
 RUN ./configure LDFLAGS="-L${BDB_DIR}/lib/" \
     CPPFLAGS="-I${BDB_DIR}/include/" \
@@ -80,7 +80,7 @@ EXPOSE 8430/udp
 EXPOSE 8434/udp
 EXPOSE 8435/udp
 
-WORKDIR /tmp/navcoin-core/src
-RUN ./navcoind -port=8430 -rpcport=8434 -debug=rpc -dns=0 -dnsseed=0
+WORKDIR /tmp/bsmcoin-core/src
+RUN ./bsmcoind -port=8430 -rpcport=8434 -debug=rpc -dns=0 -dnsseed=0
 
 ENTRYPOINT ["/bin/bash"]

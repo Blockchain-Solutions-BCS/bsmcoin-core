@@ -13,7 +13,7 @@
 - (NSString *)__bundleIdentifier
 {
     if (self == [NSBundle mainBundle]) {
-        return @"org.navcoinfoundation.NavCoin-Qt";
+        return @"org.bsmcoinfoundation.BsmCoin-Qt";
     } else {
         return [self __bundleIdentifier];
     }
