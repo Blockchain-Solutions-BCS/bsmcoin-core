@@ -64,7 +64,7 @@ static CBlock CreateGenesisBlock(uint32_t nTime, uint32_t nNonce, uint32_t nBits
 
 static CBlock CreateGenesisBlockTestnet(uint32_t nTime, uint32_t nNonce, uint32_t nBits, int32_t nVersion, const CAmount& genesisReward)
 {
-    const char* pszTimestamp = "Time does not exist. Yet";
+    const char* pszTimestamp = "Time does not exist";
     const CScript genesisOutputScript = CScript() << ParseHex("047c3ec9cb8ea3148cfdb2107383209fc0883585b25e355ded65970bde3a49c5c79dfac1210dc8a4876f6bb68431b273b6d5347955135502726b0743948cee36d1") << OP_CHECKSIG;
     return CreateGenesisBlock(pszTimestamp, genesisOutputScript, nTime, nNonce, nBits, nVersion, genesisReward);
 }
@@ -93,8 +93,8 @@ public:
         consensus.nMajorityRejectBlockOutdated = 950;
         consensus.nMajorityWindow = 1000;
         consensus.BIP34Height = 0;
-        consensus.BIP34Hash = uint256S("0x000007a78b7a0e303e6eb1cd6af8207c822482f83572fc3c2a5143dd793ca288");
-        consensus.powLimit = ArithToUint256(~arith_uint256(0) >> 16);
+        consensus.BIP34Hash = uint256S("0x078abe83f4e95d5b9de40d4e44995d24b0c4159c49792b58de16e95c4e4e410a");
+        consensus.powLimit = ArithToUint256(~arith_uint256(0) >> 2);
         consensus.nPowTargetTimespan = 10;
         consensus.nPowTargetSpacing = 10;
         consensus.fPowAllowMinDifficultyBlocks = false;
@@ -256,12 +256,12 @@ public:
         nPruneAfterHeight = 100000;
         bnProofOfWorkLimit = arith_uint256(~arith_uint256() >> 16);
 
-        genesis = CreateGenesisBlock(1596792963, 255203, 0x1f00ffff, 1, 0);
+        genesis = CreateGenesisBlock(1596792963, 9917, 0x2007ffff, 1, 0);
 
-	      consensus.hashGenesisBlock = genesis.GetHash();
+	    consensus.hashGenesisBlock = genesis.GetHash();
 
-        assert(consensus.hashGenesisBlock == uint256S("0x000007a78b7a0e303e6eb1cd6af8207c822482f83572fc3c2a5143dd793ca288"));
-        assert(genesis.hashMerkleRoot == uint256S("0xb1fc78cf632b7a740d4f7cb923b510e172c5edf9377b30f6b59eb7adaca0f96b"));
+        assert(consensus.hashGenesisBlock == uint256S("0x078abe83f4e95d5b9de40d4e44995d24b0c4159c49792b58de16e95c4e4e410a"));
+        assert(genesis.hashMerkleRoot == uint256S("0xf20b0d3a7003492f83cd9a3ee815f10e3a380357adb7ab1d2e433a3245707e28"));
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,25);
         base58Prefixes[COLDSTAKING_ADDRESS] = std::vector<unsigned char>(1,28); // cold staking addresses start with 'X'
