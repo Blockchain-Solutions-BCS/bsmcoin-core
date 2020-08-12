@@ -3,7 +3,7 @@ name: "bsmcoin-osx-4.0.0"
 enable_cache: true
 distro: "ubuntu"
 suites:
-- "bionic"
+- "trusty"
 architectures:
 - "amd64"
 packages:
