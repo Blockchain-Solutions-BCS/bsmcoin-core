@@ -1,3 +1,0 @@
-#!/bin/bash
-scp src/bsmcoind root@66.42.125.188:/root/BSM
-scp src/bsmcoind root@199.247.1.84:/root/BSM
